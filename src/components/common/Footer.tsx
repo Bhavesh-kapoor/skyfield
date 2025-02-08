@@ -141,7 +141,7 @@ export default function Footer() {
   return (
     <footer className="text-gray-50 bg-gray-900 py-10 px-4 w">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-5/6 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:w-5/6 mx-auto">
           {/* Company Info */}
           <div className="w-full">
             <div className="mb-4">
