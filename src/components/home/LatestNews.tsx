@@ -28,14 +28,14 @@ export default function LatestNews() {
   ];
   return (
     <div className="max-w-7xl lg:max-w-6xl  m-auto p-4">
-      <div className="m-auto w-3/5 text-center mb-16">
+      <div className="m-auto lg:w-3/5 text-center mb-4 lg:mb-16">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
           Form The Blog{" "}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
           The Latest News{" "}
         </h2>
-        <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] text-gray-100 mt-4 leading-8">
+        <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-3 md:line-clamp-none text-gray-100 mt-4 leading-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -61,10 +61,8 @@ export default function LatestNews() {
               </div>
 
               {/* Right Column - Content */}
-              <div
-                className={` w-full mt-8 lg:mt-4 text-center lg:text-left  `}
-              >
-                <h2 className="text-sm sm:text-sm md:text-sm lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
+              <div className={` w-full mt-8 lg:mt-4 lg:text-left  `}>
+                <h2 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
                   {"Popular"}
                 </h2>
                 <h2 className="text-lg sm:text-lg md:text-lg lg:text-lg xl:text-lg font-normal text-gray-50 leading-7 mb-2">

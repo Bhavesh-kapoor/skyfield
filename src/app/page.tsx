@@ -6,6 +6,7 @@ import VideoSection from "@/components/home/VideoSection";
 import WeBestSection from "@/components/home/WeBestSection";
 import WhoWeAre from "@/components/home/WhoWeAre";
 import Why from "@/components/home/Why";
+import { lexendDeca } from "@/data/font";
 
 export default function Home() {
   const data = {
@@ -16,7 +17,7 @@ export default function Home() {
     link: "/",
   };
   return (
-    <div className="">
+    <div className={lexendDeca.className}>
       <HeroSection title={data?.title} description={data?.description} video={data?.video} link={data?.link} />
       <WhoWeAre />
       <Service />
