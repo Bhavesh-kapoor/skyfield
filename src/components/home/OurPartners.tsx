@@ -13,10 +13,11 @@ const OurPartners: React.FC = () => {
     { id: 4, name: "Java", logo: "/images/client4.png" },
   ];
 
-
-
   return (
-    <section className="py-12 bg-whitem max-w-7xl m-auto p-4 lg:p-0">
+    <section className="py-12 relative max-w-7xl m-auto p-4 lg:p-0">
+      <div className="absolute top-32 inset-0 flex justify-center items-center">
+        <div className="w-4/5    h-screen bg-gradient-to-bl from-[#737373] via-50% via-[#FFA7A7] to-[#737373] opacity-30 rounded-full blur-3xl -z-40"></div>
+      </div>
       <div className="m-auto lg:w-3/5 text-center mb-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
           Our Commitments{" "}
@@ -46,11 +47,11 @@ const OurPartners: React.FC = () => {
           >
             {/* Map clients to show in pairs */}
             {[...clients, ...clients, ...clients].map((client, index) => (
-              <div key={index} className="flex-shrink-0 w-36 h-20 rounded-lg">
+              <div key={index} className="flex-shrink-0 w-36 h-32w rounded-lg">
                 <Image
                   src={client.logo}
-                  width={150}
-                  height={20}
+                  width={300}
+                  height={100}
                   alt={`Client ${index + 1}`}
                   className="w-full h-full object-contain p-2"
                 />

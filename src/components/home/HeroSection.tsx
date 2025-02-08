@@ -14,10 +14,10 @@ const HeroSection = ({
   video: string;
 }) => {
   return (
-    <div className="relative w-full h-[70vh] md:h-screen overflow-hidden">
+    <div className="relative w-full h-[80vh] md:h-screen overflow-hidden">
       {/* Background Video */}
       <video
-        className="absolute top-0 left-0 w-full h-[70vh] lg:h-full object-cover"
+        className="absolute top-0 left-0 w-full h-[8v0vh] lg:h-full object-cover"
         autoPlay
         loop
         muted

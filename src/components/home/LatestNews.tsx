@@ -27,7 +27,10 @@ export default function LatestNews() {
     },
   ];
   return (
-    <div className="max-w-7xl lg:max-w-6xl  m-auto p-4">
+    <div className="max-w-7xl lg:max-w-6xl relative m-auto p-4">
+         <div className="absolute top-44 left-[-50rem] inset-0 flex justify-center items-center">
+        <div className="w-2/5  h-screen bg-gradient-to-r from-[#737373] via-10% via-[#737373] to-[#ffa7a7] opacity-30 rounded-full blur-3xl -z-40"></div>
+      </div>
       <div className="m-auto lg:w-3/5 text-center mb-4 lg:mb-16">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
           Form The Blog{" "}

@@ -3,7 +3,10 @@ import React from "react";
 
 const WhoWeAre = () => {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32 py-12 flex flex-col lg:flex-row items-center justify-between">
+    <section className="container relative mx-auto p-4 sm:p-6 lg:p-12 xl:p-20 2xl:px-32 flex flex-col lg:flex-row items-center justify-center gap-8 ">
+      <div className="absolute top-44 right-rem] inset-0 flex justify-center items-center">
+        <div className="w-2/5  h-screen bg-gradient-to-r from-[#737373] via-10% via-[#737373] to-[#ffa7a7] opacity-30 rounded-full blur-3xl -z-40"></div>
+      </div>
       {/* Left Column - Image */}
       <div className="lg:w-2/5 w-full flex justify-center">
         <Image

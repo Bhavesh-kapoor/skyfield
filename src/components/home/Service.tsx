@@ -45,10 +45,10 @@ export default function Service() {
         {datas &&
           datas?.map((data, index) => (
             <div
-              className="border text-left col-span-1 text-gray-50 p-8 h-72 flex flex-col justify-end items-end"
+              className="border text-left col-span-1 text-gray-50 p-8 h-64 flex flex-col justify-end items-startw"
               key={index}
             >
-              <h2 className="text-2xl mb-2">{data?.title}</h2>
+              <h2 className="text-sm font-semibold mb-2">{data?.title}</h2>
               <p className="text-xs mb-6">{data?.description}</p>
               <div className="w-full flex justify-end items-center">
                 <button className="bg-gray-50 text-gray-800 rounded-full text-2xl p-1.5 w-10 h-10">
