@@ -28,7 +28,7 @@ const features = [
 
 export default function Innovative() {
   return (
-    <div className="text-white p-5 md:p-10 lg:p-20 flex flex-col lg:flex-row items-start gap-10 ">
+    <div className="text-white p-5 lg:p-10 lg:p-20 flex flex-col lg:flex-row items-start gap-10 ">
       {/* Image Section */}
       <div className="w-full lg:w-1/3 ">
         <Image

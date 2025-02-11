@@ -4,7 +4,7 @@ import React from "react";
 
 const Mission = () => {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32 py-12 flex flex-col lg:flex-row items-center justify-between bg-[#b0b0b08c] border-none ">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32 py-12 flex flex-col lg:flex-row items-center justify-between border-none ">
       {/* Left Column - Image */}
       <div className="w-4/5  lg:w-2/5 flex justify-center mb-6 lg:mb-0">
         <Image

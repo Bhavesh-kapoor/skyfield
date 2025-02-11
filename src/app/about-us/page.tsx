@@ -22,11 +22,15 @@ export default function Home() {
         video={data?.video}
         link={data?.link}
       />
-      <Vision />
-      <Mission />
+      <div className="bg-[#b0b0b08c]">
+        <Vision />
+        <Mission />
+      </div>
       <OurStory />
       <WeDone />
-      <LeaderShips />
+      <div className="bg-[#b0b0b08c]">
+        <LeaderShips />
+      </div>
     </div>
   );
 }

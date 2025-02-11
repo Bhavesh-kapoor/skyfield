@@ -40,7 +40,7 @@ const OurStory = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
             We Take The Best Footage{" "}
           </h2> */}
-          <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] text-gray-100 mt-4 leading-8">
+          <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-100 mt-4 leading-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -50,7 +50,7 @@ const OurStory = () => {
             culpa qui officia deserunt mollit anim id est laborum.{" "}
           </p>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] text-gray-100 mt-4 leading-8">
+          <p className="text-base sm:text-lg md:text-xl lg:text-[16px] line-clamp-4 md:line-clamp-none xl:text-[16px] text-gray-100 mt-4 leading-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
