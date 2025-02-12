@@ -1,4 +1,5 @@
-  import React from "react";
+  import Link from "next/link";
+import React from "react";
   import { GoArrowUpRight } from "react-icons/go";
 
 
@@ -51,9 +52,9 @@
                 <h2 className="text-sm font-semibold mb-2">{data?.title}</h2>
                 <p className="text-sm md:text-xs mb-6">{data?.description}</p>
                 <div className="w-full flex justify-end items-center">
-                  <button className="bg-gray-50 text-gray-800 rounded-full text-2xl p-1.5 w-10 h-10">
+                  <Link href={'/about-us'} className="bg-gray-50 text-gray-800 rounded-full text-2xl p-1.5 w-10 h-10">
                     <GoArrowUpRight width={30} height={30} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

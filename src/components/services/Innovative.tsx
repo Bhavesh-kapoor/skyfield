@@ -28,7 +28,7 @@ const features = [
 
 export default function Innovative() {
   return (
-    <div className="text-white p-5 lg:p-10 lg:p-20 flex flex-col lg:flex-row items-start gap-10 ">
+    <div className="text-white p-5  lg:p-20 flex flex-col lg:flex-row items-start gap-10 max-w-7xl m-auto  ">
       {/* Image Section */}
       <div className="w-full lg:w-1/3 ">
         <Image
@@ -36,7 +36,7 @@ export default function Innovative() {
           alt="Indoor Drone"
           width={500}
           height={500}
-          className="object-cover h-screen rounded-none"
+          className="object-cover h-[80vh] 2xl:h-[70vh] w-full rounded-none"
         />
       </div>
 

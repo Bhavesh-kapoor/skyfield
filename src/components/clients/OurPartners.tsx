@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function OurPartners() {
@@ -54,9 +55,9 @@ export default function OurPartners() {
           ))}
       </div>
       <div className="w-2/4 m-auto col-span-2 flex justify-start items-center mb-4">
-        <button className="bg-black text-gray-50 w-full font-semibold border-gray-900 border-[1.3px] flex justify-center items-center text-sm p-4">
+        <Link href={"/contact-us"} className="bg-black text-gray-50 w-full font-semibold border-gray-900 border-[1.3px] flex justify-center items-center text-sm p-4">
           Become a Partner Now
-        </button>
+        </Link>
       </div>
     </div>
   );

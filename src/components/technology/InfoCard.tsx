@@ -24,7 +24,7 @@ export default function InfoCard({ datas }: InfoCardProps) {
         {datas &&
           datas.map((data: data, index: number) => (
             <div
-              className="col-span-2 md:col-span-1 border p-1 md:min-h-[80vh]"
+              className="col-span-2 md:col-span-1 border p-1 md:min-h-[80vh] 2xl:min-h-[25vh]"
               key={index}
             >
               <h2 className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl  font-bold text-center text-gray-800 leading-7 mb-2 p-2 bg-[#FFA7A7]">
@@ -44,7 +44,7 @@ export default function InfoCard({ datas }: InfoCardProps) {
             </div>
           ))}
         <Link
-          href="/"
+          href="/about-us"
           className="col-span-2 w-full m-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center"
         >
           Learn More About Our Drone Systems{" "}

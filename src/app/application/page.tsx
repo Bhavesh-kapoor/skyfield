@@ -21,9 +21,11 @@ export default function page() {
         link={data?.link}
         video={data?.video}
       />
-      <ProductSection />
-      <DroneSystem />
-      <Essentials />  
+      <div className="bg-gray-50">
+        <ProductSection />
+        <DroneSystem />
+      </div>
+      <Essentials />
       <TechApplication />
     </div>
   );

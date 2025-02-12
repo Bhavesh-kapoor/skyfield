@@ -19,7 +19,7 @@ export default function SkillFields() {
           width={1200}
           height={300}
           alt="Image 1"
-          className="object-cover h-[90vh]  "
+          className="object-cover h-[90vh] 2xl:h-[30vh]  "
         />
       </div>
     </div>

@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function CommandCenter() {
+export default function   CommandCenter() {
   const rapidDeployment = [
     { title: "Operational in under 60 seconds", position: "top-left" },
     { title: "Vehicle-agnostic platform", position: "top-right" },

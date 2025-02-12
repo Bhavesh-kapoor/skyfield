@@ -21,14 +21,12 @@ export default function InfoCard2({ datas }: InfoCardProps) {
       } ${lexendDeca.className}`}
     >
       <div
-        className={`grid grid-cols-1 ${
-          datas.length === 2 ? "md:grid-cols-2" : "lg:grid-cols-3"
-        } md:p-6 md:gap-6 text-gray-50`}
+        className={`grid grid-cols-1 md:grid-cols-3 md:p-6 md:gap-6 text-gray-50`}
       >
         {datas &&
           datas.map((data: data, index: number) => (
             <div
-              className="col-span-2 lga:col-span-1 mb-4 md:mb-0 border p-1 md:min-h-[60vh]"
+              className="col-span-2 md:col-span-1 mb-4 md:mb-0 border p-1 md:min-h-[60vh] 2xl:min-h-[20vh]"
               key={index}
             >
               <h2 className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl  font-bold text-center text-gray-800 leading-7 mb-2 p-2 bg-[#FFA7A7]">
@@ -52,7 +50,7 @@ export default function InfoCard2({ datas }: InfoCardProps) {
             </div>
           ))}
         <Link
-          href="/"
+          href="/about-us"
           className={` col-span-2 ${
             datas.length === 2 ? "col-span-2" : "col-span-3"
           } w-full m-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center`}

@@ -1,5 +1,6 @@
 import { lexendDeca } from "@/data/font";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 
@@ -13,7 +14,7 @@ const Vision = () => {
           alt="Explore Image"
           width={800}
           height={630}
-          className="rounded-none shadow-lg w-80 lg:w-96 h-[50vh] lg:h-[85vh] object-center max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl object-cover"
+          className="rounded-none shadow-lg w-80 2xl:w-fulla lg:w-96 h-[50vh] lg:h-[85vh] 2xl:h-[30vh] object-center max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl object-cover"
         />
       </div>
 
@@ -36,9 +37,9 @@ const Vision = () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.{" "}
         </p>
-        <button className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-gray-900 border-gray-900 rounded-none shadow-md border transition">
+        <Link href={"/about-us"} className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-gray-900 border-gray-900 rounded-none shadow-md border transition">
           Explore More
-        </button>
+        </Link>
       </div>
     </section>
   );

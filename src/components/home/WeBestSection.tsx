@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 
@@ -77,10 +78,10 @@ export default function WeBestSection() {
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
                   laboris nisi ut aliquip ex ea commodo consequat
                 </p>
-                <button className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center">
+                <Link href={'/contact-us'} className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center">
                   View Products{" "}
                   <GoArrowUpRight width={20} height={20} className="ml-2" />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

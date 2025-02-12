@@ -18,25 +18,25 @@ export default function ContactUsForm({ details }: { details?: boolean }) {
           <h2 className="text sm:text-sm md:text-lg lg:text-xl xl:text-xl font-medium tracking-widest mb-4  ">
             Send Us Query
           </h2>
-          <form action="/" className="grid grid-cols-2 gap-6 ">
+          <form action="/" className="grid grid-cols-1 md:grid-cols-2 md:gap-6 ">
             <input
               type="text"
-              className="border border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
+              className="border col-span-2 md:col-span-1 border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
               placeholder="First Name"
             />{" "}
             <input
               type="text"
-              className="border border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
+              className="border col-span-2 md:col-span-1 border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
               placeholder="First Name"
             />{" "}
             <input
               type="text"
-              className="border border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
+              className="border col-span-2 md:col-span-1 border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
               placeholder="First Name"
             />{" "}
             <input
               type="text"
-              className="border border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
+              className="border col-span-2 md:col-span-1 border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
               placeholder="First Name"
             />
             <textarea

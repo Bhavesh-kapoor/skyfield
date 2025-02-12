@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const OurStory = () => {
@@ -20,7 +21,7 @@ const OurStory = () => {
       </div>
       <div className="flex-col lg:flex lg:flex-row justify-center items-center">
         {/* Left Column - Image */}
-        <div className="lg:w-2/5 w-full h-[50vh] lg:h-[80vh] flex justify-center">
+        <div className="lg:w-2/5 w-full h-[50vh] lg:h-[80vh] 2xl:h-[30vh] flex justify-center">
           <Image
             src="/images/handShake.png" // Ensure this image exists in the public folder
             alt="Explore Image"
@@ -56,9 +57,9 @@ const OurStory = () => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
-          <button className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition">
+          <Link href={"/about-us"} className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition">
             Explore More
-          </button>
+          </Link>
         </div>
       </div>
     </section>

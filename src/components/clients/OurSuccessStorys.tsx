@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function OurSuccessStory() {
@@ -50,9 +51,9 @@ export default function OurSuccessStory() {
               </div>
               <p className="text-md text-black pr-6 font-medium mb-6">{data?.description}</p>
               <div className="w-4/5 flex justify-start items-center mb-4">
-                <button className="bg-gray-50 text-gray-800 w-full border-gray-900 border-[1.3px] flex justify-center items-center text-sm   h-10">
+                <Link href={'/about-us'} className="bg-gray-50 text-gray-800 w-full border-gray-900 border-[1.3px] flex justify-center items-center text-sm   h-10">
                   View Story
-                </button>
+                </Link>
               </div>
             </div>
           ))}

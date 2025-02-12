@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 
@@ -72,10 +73,10 @@ export default function LatestNews() {
                   {data?.title}
                 </h2>
                 <p className="text-gray-50 text-xs mb-4">{data?.date}</p>
-                <button className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center">
+                <Link href={'/news'} className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center">
                   Read More{" "}
                   <GoArrowUpRight width={20} height={20} className="ml-2" />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

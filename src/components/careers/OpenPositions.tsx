@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FaUser } from "react-icons/fa";
 
@@ -55,9 +56,9 @@ export default function OpenPosition() {
               key={index}
             >
               <div className="w-full flex justify-start items-center mb-4">
-                <button className="bg-gray-50 text-gray-800 rounded-full border-gray-900 border-[1.3px] flex justify-center items-center text-sm w-10 h-10">
+                <Link href={"/contact-us"} className="bg-gray-50 text-gray-800 rounded-full border-gray-900 border-[1.3px] flex justify-center items-center text-sm w-10 h-10">
                   <FaUser width={16} height={16} />
-                </button>
+                </Link>
               </div>
               <h2 className="text-md font-semibold mb-2">{data?.title}</h2>
               <p className="text-xs mb-6">

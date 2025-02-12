@@ -19,7 +19,7 @@ export default function Advancing() {
         description={data?.description}
       />
       <Link
-        href="/"
+        href="/contact-us"
         className={` md:w-2/5 m-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center`}
       >
         Get a Demo Today{" "}

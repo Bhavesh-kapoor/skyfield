@@ -2,6 +2,7 @@ import React from "react";
 import HeaderSection from "../common/HeaderSection";
 import { GoArrowUpRight } from "react-icons/go";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Innovation() {
   const datas = [
@@ -59,10 +60,10 @@ export default function Innovation() {
                     {data?.title}
                   </h2>
 
-                  <button className="mt-6 m-auto px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center">
-                    View pros{" "}
+                  <Link href={'/contact-us'} className="mt-6 m-auto px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center">
+                    View products{" "}
                     <GoArrowUpRight width={20} height={20} className="ml-2" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

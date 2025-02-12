@@ -5,19 +5,18 @@ import { GoArrowUpRight } from "react-icons/go";
 const HeroSection = ({
   title,
   description,
-  link,
   video,
 }: {
   title: string;
   description: string;
-  link: string;
+  link?: string;
   video: string;
 }) => {
   return (
-    <div className="relative w-full h-[80vh] md:h-screen overflow-hidden">
+    <div className="relative w-full h-[80vh] md:h-screen 2xl:h-[70vh] overflow-hidden">
       {/* Background Video */}
       <video
-        className="absolute top-0 left-0 w-full h-[80vh] lg:h-full object-cover"
+        className="absolute top-0 left-0 w-full wh-[80vh] md:h-screen 2xl:h-[70vh] object-cover"
         autoPlay
         loop
         muted
@@ -31,14 +30,14 @@ const HeroSection = ({
       <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Centered Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center lg:justify-end text-center text-white px-6 lg:w-3/5 m-auto p-4 mb-10">
+      <div className="absolute inset-0 flex flex-col items-center justify-center lg:justify-end 2xl:justify-center text-center text-white px-6 lg:w-3/5 m-auto p-4 mb-10">
         <h1 className="text-2xl md:text-4xl lg:4xl xl:5xl font-bold">{title}</h1>
-        <p className="text-sm line-clamp-4 md:line-clamp-none md:text-sm mt-4 max-w-2xl left-6 mb-10">
+        <p className="text-sm line-clamp-4 md:line-clamp-none md:text-sm 2xl:text-fxl mt-4 max-w-2xl left-6 mb-10">
           {description}
         </p>
         <div className="flex justify-between items-center">
           <Link
-            href={link}
+            href={"/about-us"}
             className="border border-gray-50 px-5 py-2 text-gray-50 flex justify-between items-center"
           >
             Learn More{" "}

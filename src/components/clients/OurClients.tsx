@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function OurClients() {
@@ -51,9 +52,9 @@ export default function OurClients() {
               <h2 className="text-md font-semibold mb-2">{data?.title}</h2>
               <p className="text-xs mb-6">{data?.description}</p>
               <div className="w-full flex justify-start items-center mb-4">
-                <button className="bg-gray-50 text-gray-800 w-full border-gray-900 border-[1.3px] flex justify-center items-center text-sm   h-10">
+                <Link href={"/contact-us"} className="bg-gray-50 text-gray-800 w-full border-gray-900 border-[1.3px] flex justify-center items-center text-sm   h-10">
                   Know More
-                </button>
+                </Link>
               </div>
             </div>
           ))}

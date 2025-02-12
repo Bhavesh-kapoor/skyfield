@@ -31,7 +31,7 @@ const features = [
 
 export default function ProductSection() {
   return (
-    <div className="max-w-7xl mx-auto p-4 lg:px-20 lg:py-44  bg-gray-50 ">
+    <div className="max-w-7xl mx-auto p-4 lg:px-20 lg:py-44">
     
       <HeaderSection
         title="Operational Excellence in Military Strategy and Tactics"
@@ -49,7 +49,7 @@ export default function ProductSection() {
             alt="Indoor Drone"
             width={500}
             height={500}
-            className="object-cover h-screen rounded-none w-full lg:w-auto"
+            className="object-cover md:h-[80vh] 2xl:h-[28vh] rounded-none w-full lg:w-auto"
           />
         </div>
 

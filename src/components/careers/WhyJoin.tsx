@@ -18,7 +18,7 @@ export default function WhyJoin() {
 
       <div className="flex-col lg:flex lg:flex-row justify-center items-center mb-20">
         {/* Left Column - Image */}
-        <div className="lg:w-2/4 w-full h-[50vh] lg:h-[80vh] flex justify-center">
+        <div className="lg:w-2/4 w-full h-[50vh] lg:h-[80vh] 2xl:h-[30vh] flex justify-center">
           <Image
             src="/images/whyJoin.png" // Ensure this image exists in the public folder
             alt="Explore Image"
@@ -61,7 +61,7 @@ export default function WhyJoin() {
       </div>
       <div className="flex-col lg:flex lg:flex-row-reverse  justify-center items-center">
         {/* Left Column - Image */}
-        <div className="lg:w-2/4 w-full h-[50vh] lg:h-[80vh] flex justify-center">
+        <div className="lg:w-2/4 w-full h-[50vh] lg:h-[80vh] 2xl:h-[30vh] flex justify-center">
           <Image
             src="/images/benifit.png" // Ensure this image exists in the public folder
             alt="Explore Image"

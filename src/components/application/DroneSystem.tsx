@@ -37,7 +37,7 @@ export default function DroneSystem() {
   ];
 
   return (
-    <div className="max-w-7xl p-4 m-auto hidden lg:block bg-gray-50">
+    <div className="max-w-7xl p-4 m-auto hidden lg:block">
       <HeaderSection
         title="Advanced Drone System combines mother-drone technology"
         subTitle={" Advanced Drone System"}
