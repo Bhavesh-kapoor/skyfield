@@ -125,8 +125,8 @@ const Why: React.FC = () => {
             >
               <Image
                 src={client.logo}
-                width={50}
-                height={50}
+                width={5000}
+                height={5000}
                 alt={`Client ${index + 1}`}
                 className="w-28 h-28 object-contain p-2"
               />

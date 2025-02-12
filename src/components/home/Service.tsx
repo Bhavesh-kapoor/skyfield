@@ -34,7 +34,7 @@
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
             Service That We Offer{" "}
           </h2>
-          <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-100 mt-4 leading-8">
+          <p className="text-sm sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-100 mt-4 leading-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
             minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -49,7 +49,7 @@
                 key={index}
               >
                 <h2 className="text-sm font-semibold mb-2">{data?.title}</h2>
-                <p className="text-xs mb-6">{data?.description}</p>
+                <p className="text-sm md:text-xs mb-6">{data?.description}</p>
                 <div className="w-full flex justify-end items-center">
                   <button className="bg-gray-50 text-gray-800 rounded-full text-2xl p-1.5 w-10 h-10">
                     <GoArrowUpRight width={30} height={30} />
