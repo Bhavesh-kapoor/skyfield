@@ -18,6 +18,8 @@ export default function MobileMenu() {
     { name: "Application", path: "/application" },
     { name: "Career", path: "/career" },
     { name: "Blogs", path: "/blogs" },
+    { name: "Contact Us", path: "/contact-us" },
+
   ];
 
   return (

@@ -4,7 +4,7 @@ import ContactDetails from "./ContactDetails";
 
 export default function ContactUsForm({ details }: { details?: boolean }) {
   return (
-    <div className="max-w-7xl p-4 m-auto hidden lg:block">
+    <div className="max-w-7xl p-4 m-auto lg:block">
       <HeaderSection
         title="Contact Us"
         subTitle={""}
