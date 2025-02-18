@@ -1,29 +1,31 @@
+import { ISection, SubContent } from "@/utils/server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 
-export default function WeBestSection() {
-  const datas = [
-    {
-      title: "Drone Systems",
-      description:
-        "Our team of experts will help you to extend your drone operations to new heights.",
-      image: "/images/product1.png",
-    },
-    {
-      title: "Control Software",
-      description:
-        "Our team of experts will help you to extend your drone operations to new heights.",
-      image: "/images/product2.png",
-    },
-    {
-      title: "Tactical Trailers",
-      description:
-        "Our team of experts will help you to extend your drone operations to new heights.",
-      image: "/images/product3.png",
-    },
-  ];
+const WeBestSection = ({ sectionData }: { sectionData: ISection }) => {
+  if (!sectionData) return null;
+  // const datas = [
+  //   {
+  //     title: "Drone Systems",
+  //     description:
+  //       "Our team of experts will help you to extend your drone operations to new heights.",
+  //     image: "/images/product1.png",
+  //   },
+  //   {
+  //     title: "Control Software",
+  //     description:
+  //       "Our team of experts will help you to extend your drone operations to new heights.",
+  //     image: "/images/product2.png",
+  //   },
+  //   {
+  //     title: "Tactical Trailers",
+  //     description:
+  //       "Our team of experts will help you to extend your drone operations to new heights.",
+  //     image: "/images/product3.png",
+  //   },
+  // ];
   return (
     <div className="max-w-7xl relative lg:max-w-6xl  m-auto p-4">
       <div className="absolute top-44 right-0 inset-0 flex justify-center items-center">
@@ -31,21 +33,19 @@ export default function WeBestSection() {
       </div>
       <div className="m-auto lg:w-3/5 text-center lg:mb-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          Featured Products{" "}
+          {sectionData.subtitle || "Featured Products"}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
-          We have the best equipment{" "}
+          {sectionData.title || "We have the best equipment"}{" "}
         </h2>
         <p className="text-sm sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-100 mt-4 leading-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat
+          {sectionData?.description ||
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"}
         </p>
       </div>
       <div className="">
-        {datas &&
-          datas?.map((data, index) => (
+        {sectionData.subContents &&
+          sectionData.subContents?.map((data: SubContent, index: number) => (
             <div
               key={index}
               className="container mx-auto p-0 sm:p-6 lg:p-12 xl:p-20 2xl:p-32 py-12 flex flex-col lg:flex-row items-center justify-between"
@@ -53,7 +53,7 @@ export default function WeBestSection() {
               {/* Left Column - Image */}
               <div className="lg:w-2/4 h-80  w-full flex justify-center">
                 <Image
-                  src={data?.image} // Ensure this image exists in the public folder
+                  src={"/images/pro1.png"} // Ensure this image exists in the public folder
                   alt="Explore Image"
                   width={800}
                   height={630}
@@ -73,12 +73,12 @@ export default function WeBestSection() {
                   {data?.title}
                 </h2>
                 <p className="text-sm sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-100 mt-4 leading-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat
+                  {data?.description}
                 </p>
-                <Link href={'/contact-us'} className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center">
+                <Link
+                  href={"/contact-us"}
+                  className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center"
+                >
                   View Products{" "}
                   <GoArrowUpRight width={20} height={20} className="ml-2" />
                 </Link>
@@ -88,4 +88,6 @@ export default function WeBestSection() {
       </div>
     </div>
   );
-}
+};
+
+export default WeBestSection;

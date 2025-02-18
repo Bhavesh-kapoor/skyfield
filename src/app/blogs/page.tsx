@@ -1,8 +1,16 @@
 import React from "react";
 import HeroSection from "../../components/home/HeroSection";
 import Blogs from "@/components/blogs/Blog";
+import { getBlogData } from "@/utils/server";
 
-export default function page() {
+const page = async () => {
+  const {
+    loading,
+    title,
+    description,
+    videoUrl,
+  } = await getBlogData();
+  if (loading) return null;
   const data = {
     title: "Our Latest Blogs",
     description:
@@ -13,14 +21,16 @@ export default function page() {
   return (
     <div>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
+        title={title || data?.title}
+        description={description || data?.description}
         link={data?.link}
-        video={data?.video}
+        video={videoUrl || data?.video}
       />
       <div className="bg-gray-50">
         <Blogs />
       </div>
     </div>
   );
-}
+};
+
+export default page;

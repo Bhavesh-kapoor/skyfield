@@ -1,22 +1,20 @@
+import { ISection } from "@/utils/server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const OurStory = () => {
+const OurStory = ({ sectionData }: { sectionData: ISection | undefined }) => {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32 py-12 text-center">
       <div className=" lg:w-4/6 m-auto mb-8">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          Our Story{" "}
+          {sectionData?.subtitle || "Our Story"}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
-          How We Started{" "}
+          {sectionData?.title || "Story"}
         </h2>
         <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-3 md:line-clamp-none text-gray-100 mt-4 leading-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat
+          {sectionData?.description || " This is a description of our story."}
         </p>
       </div>
       <div className="flex-col lg:flex lg:flex-row justify-center items-center">
@@ -42,22 +40,20 @@ const OurStory = () => {
             We Take The Best Footage{" "}
           </h2> */}
           <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-100 mt-4 leading-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.{" "}
+            {sectionData?.subContents[0].description ||
+              " This is a description of our story."}
           </p>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-[16px] line-clamp-4 md:line-clamp-none xl:text-[16px] text-gray-100 mt-4 leading-8">
+          {/* <p className="text-base sm:text-lg md:text-xl lg:text-[16px] line-clamp-4 md:line-clamp-none xl:text-[16px] text-gray-100 mt-4 leading-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
-          </p>
-          <Link href={"/about-us"} className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition">
+          </p> */}
+          <Link
+            href={"/about-us"}
+            className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition"
+          >
             Explore More
           </Link>
         </div>

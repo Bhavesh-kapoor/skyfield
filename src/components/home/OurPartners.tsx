@@ -4,15 +4,17 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ISection } from "@/utils/server";
 
-const OurPartners: React.FC = () => {
-  const clients = [
-    { id: 1, name: "Android", logo: "/images/client1.png" },
-    { id: 2, name: "Kotlin", logo: "/images/client2.png" },
-    { id: 3, name: "FireStore", logo: "/images/client3.png" },
-    { id: 4, name: "Java", logo: "/images/client4.png" },
-  ];
-
+const OurPartners = ({ sectionData }: { sectionData: ISection }) => {
+  if (!sectionData) return null;
+  // let clients = [
+  //   { id: 1, name: "Android", coverImage:"", logo: "/images/client1.png" },
+  //   { id: 2, name: "Kotlin", coverImage:"",logo: "/images/client2.png" },
+  //   { id: 3, name: "FireStore", coverImage:"",logo: "/images/client3.png" },
+  //   { id: 4, name: "Java", coverImage:"", logo: "/images/client4.png" },
+  // ];
+  const clients = sectionData.subContents;
   return (
     <section className="py-12 relative max-w-7xl m-auto p-4 lg:p-0">
       <div className="absolute top-32 inset-0 flex justify-center items-center">
@@ -20,16 +22,14 @@ const OurPartners: React.FC = () => {
       </div>
       <div className="m-auto lg:w-3/5 text-center mb-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          Our Commitments{" "}
+          {sectionData?.subtitle || "Our Commitments"}{" "}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
-          Our Partners{" "}
+          {sectionData?.title || "Our Partners"}{" "}
         </h2>
         <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-3 md:line-clamp-none text-gray-100 mt-4 leading-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat
+          {sectionData.description ||
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat"}
         </p>
       </div>
 
@@ -49,7 +49,7 @@ const OurPartners: React.FC = () => {
             {[...clients, ...clients, ...clients].map((client, index) => (
               <div key={index} className="flex-shrink-0 w-36 h-32w rounded-lg">
                 <Image
-                  src={client.logo}
+                  src={"/images/client1.png"}
                   width={300}
                   height={100}
                   alt={`Client ${index + 1}`}
