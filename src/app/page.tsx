@@ -7,8 +7,22 @@ import WeBestSection from "@/components/home/WeBestSection";
 import WhoWeAre from "@/components/home/WhoWeAre";
 import Why from "@/components/home/Why";
 import { lexendDeca } from "@/data/font";
+import { getHomeData } from "@/utils/server";
 
-export default function Home() {
+const Home = async () => {
+  const {
+    loading,
+    title,
+    description,
+    section1,
+    section2,
+    section3,
+    section4,
+    section5,
+    section6,
+    section7,
+  } = await getHomeData();
+  if (!loading) return null;
   const data = {
     title: "Your All In One Solution For Unmanned System Force",
     description:
@@ -18,14 +32,21 @@ export default function Home() {
   };
   return (
     <div className={lexendDeca.className}>
-      <HeroSection title={data?.title} description={data?.description} video={data?.video} link={data?.link} />
-      <WhoWeAre />
-      <Service />
-      <VideoSection />
-      <WeBestSection />
-      <OurPartners />
-      <Why />
-      <LatestNews />
+      <HeroSection
+        title={title || data?.title}
+        description={description || data?.description}
+        video={ data?.video}
+        link={"/contact"}
+      />
+      {section1 && <WhoWeAre sectionData={section1} />}
+      {section2 && <Service sectionData={section2} />}
+      {section3 && <VideoSection sectionData={section3} />}
+      {section4 && <WeBestSection sectionData={section4} />}
+      {section5 && <OurPartners sectionData={section5} />}
+      {section6 && <Why sectionData={section6} />}
+      {section7 && <LatestNews sectionData={section7} />}
     </div>
   );
-}
+};
+
+export default Home;

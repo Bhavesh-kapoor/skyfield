@@ -31,7 +31,7 @@ export default function ContactDetails() {
             className={`flex flex-col justify-center items-center h-64 border-[1.5px] border-gray-900 p-6`}
           >
             <Image
-              src={client.logo}
+              src={client.logo || "/images/email.png"}
               width={40}
               height={40}
               alt={`Client ${index + 1}`}

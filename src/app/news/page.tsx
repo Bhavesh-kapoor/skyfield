@@ -108,7 +108,7 @@ export default function page() {
                   {/* Left Column - Image */}
                   <div className=" h-80  w-full flex justify-center">
                     <Image
-                      src={data?.image} // Ensure this image exists in the public folder
+                      src={data?.image|| '/images/pro1.png'} // Ensure this image exists in the public folder
                       alt="Explore Image"
                       width={800}
                       height={630}

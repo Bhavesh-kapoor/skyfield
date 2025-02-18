@@ -5,8 +5,19 @@ import Vision from "@/components/aboutUs/Vision";
 import WeDone from "@/components/aboutUs/WeDone";
 import HeroSection from "@/components/home/HeroSection";
 import { lexendDeca } from "@/data/font";
+import { getAboutData } from "@/utils/server";
 
-export default function Home() {
+const page = async () => {
+  const {
+    loading,
+    title,
+    description,
+    section1,
+    section2,
+    section3,
+    section4,
+  } = await getAboutData();
+  if (!loading) return null;
   const data = {
     title: "About Us",
     description:
@@ -17,20 +28,22 @@ export default function Home() {
   return (
     <div className={`${lexendDeca.className}`}>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
+        title={title || data?.title}
+        description={description || data?.description}
         video={data?.video}
-        link={data?.link}
+        link={"/contact"}
       />
       <div className="bg-[#b0b0b08c]">
-        <Vision />
-        <Mission />
+        <Vision sectionData={section1} />
+        <Mission sectionData={section2} />
       </div>
-      <OurStory />
+      <OurStory sectionData={section3} />
       <WeDone />
       <div className="bg-[#b0b0b08c]">
-        <LeaderShips />
+        <LeaderShips sectionData={section4} />
       </div>
     </div>
   );
-}
+};
+
+export default page;

@@ -2,8 +2,13 @@ import React from "react";
 import HeaderSection from "../common/HeaderSection";
 import Image from "next/image";
 import InfoCard2 from "./Infocard2";
+import { ISection } from "@/utils/server";
 
-export default function Next() {
+export default function Next({
+  sectionData,
+}: {
+  sectionData: ISection | undefined;
+}) {
   const datas = [
     {
       title: "Real-Time Analysis",
@@ -37,9 +42,10 @@ export default function Next() {
   return (
     <div className="max-w-7xl p-4 m-auto">
       <HeaderSection
-        title="Revolutionizing Aerial Operations"
-        subTitle={" Advanced Drone System"}
+        title={sectionData?.title || "Revolutionizing Aerial Operations"}
+        subTitle={sectionData?.subtitle || " Advanced Drone System"}
         description={
+          sectionData?.description ||
           "The Skyfield Advanced Drone System combines mother-drone technology with specialized indoor drones for unprecedented operational flexibility:"
         }
       />

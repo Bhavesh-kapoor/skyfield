@@ -1,11 +1,21 @@
+import React from "react";
 import DroneSystem from "@/components/application/DroneSystem";
 import Essentials from "@/components/application/Essentials";
 import ProductSection from "@/components/application/ProudctSection";
 import TechApplication from "@/components/application/TechApplication";
 import HeroSection from "@/components/home/HeroSection";
-import React from "react";
+import { getApplicationData } from "@/utils/server";
 
-export default function page() {
+const page = async () => {
+  const {
+    loading,
+    title,
+    description,
+    section1,
+    section2,
+    section3,
+  } = await getApplicationData();
+  if (!loading) return null;
   const data = {
     title: "Our Applications",
     description:
@@ -16,17 +26,19 @@ export default function page() {
   return (
     <div>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
+        title={title || data?.title}
+        description={description || data?.description}
         link={data?.link}
-        video={data?.video}
+        video={"/videos/heroSection.mp4"}
       />
       <div className="bg-gray-50">
-        <ProductSection />
-        <DroneSystem />
+        <ProductSection sectionData={section1} />
+        <DroneSystem sectionData={section2} />
       </div>
-      <Essentials />
-      <TechApplication />
+      <Essentials  />
+      <TechApplication sectionData={section3} />
     </div>
   );
-}
+};
+
+export default page;

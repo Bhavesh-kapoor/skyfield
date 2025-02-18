@@ -1,10 +1,15 @@
 "use client";
 import React from "react";
-import HeaderSection from "../common/HeaderSection";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import HeaderSection from "../common/HeaderSection";
+import { ISection } from "@/utils/server";
 
-export default function DroneSystem() {
+const DroneSystem = ({
+  sectionData,
+}: {
+  sectionData: ISection | undefined;
+}) => {
   const features = [
     {
       title: "Emergency Response",
@@ -39,9 +44,13 @@ export default function DroneSystem() {
   return (
     <div className="max-w-7xl p-4 m-auto hidden lg:block">
       <HeaderSection
-        title="Advanced Drone System combines mother-drone technology"
-        subTitle={" Advanced Drone System"}
+        title={
+          sectionData?.title ||
+          "Advanced Drone System combines mother-drone technology"
+        }
+        subTitle={sectionData?.subtitle || " Advanced Drone System"}
         description={
+          sectionData?.description ||
           "Breakthrough Innovation in Integrated Drone Systems Skyfield presents the next generation of operational drone systems. Our advanced system combines an innovative mother drone serving as a launch and communication station, with specialized Indoor drones for missions inside buildings and complex environments. Skyfield, a leader in advanced drone solutions, brings cutting-edge technology to the modern battlefield."
         }
         textColor="gray"
@@ -56,15 +65,17 @@ export default function DroneSystem() {
               transition={{ duration: 0.8 }}
               className="relative flex justify-center z-50"
             >
-              <div className="w-72 md:w-96 lg:w-[450px] aspect-square rounded-full overflow-hidden">
-                <Image
-                  src="/images/drone.png"
-                  alt="Drone"
-                  width={450}
-                  height={450}
-                  className="object-cover w-full h-full"
-                />
-              </div>
+              {
+                <div className="w-72 md:w-96 lg:w-[450px] aspect-square rounded-full overflow-hidden">
+                  <Image
+                    src={"/images/drone.png"}
+                    alt="Drone"
+                    width={450}
+                    height={450}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              }
             </motion.div>
 
             {features.map((feature, index) => (
@@ -108,4 +119,6 @@ export default function DroneSystem() {
       </div>
     </div>
   );
-}
+};
+
+export default DroneSystem;
