@@ -6,16 +6,17 @@ import TechApplication from "@/components/application/TechApplication";
 import HeroSection from "@/components/home/HeroSection";
 import { getApplicationData } from "@/utils/server";
 
+
 const page = async () => {
-  const {
-    loading,
-    title,
-    description,
-    section1,
-    section2,
-    section3,
-  } = await getApplicationData();
-  if (!loading) return null;
+const {
+  loading,
+  title,
+  description,
+  section1,
+  section2,
+  section3,
+} = await getApplicationData();
+if (!loading) return null;
   const data = {
     title: "Our Applications",
     description:
