@@ -3,9 +3,19 @@ import Essentials from "@/components/application/Essentials";
 import ProductSection from "@/components/application/ProudctSection";
 import TechApplication from "@/components/application/TechApplication";
 import HeroSection from "@/components/home/HeroSection";
+import { getApplicationData } from "@/utils/server";
 import React from "react";
 
-export default function page() {
+const page = async () => {
+const {
+  loading,
+  title,
+  description,
+  section1,
+  section2,
+  section3,
+} = await getApplicationData();
+if (!loading) return null;
   const data = {
     title: "Our Applications",
     description:

@@ -2,8 +2,12 @@ import React from "react";
 import HeroSection from "../../components/home/HeroSection";
 import OpenPosition from "@/components/careers/OpenPositions";
 import WhyJoin from "@/components/careers/WhyJoin";
+import { getCareerData } from "@/utils/server";
 
-export default function page() {
+const page = async () => {
+  const { loading, title, description, section1, section2, section3 } =
+    await getCareerData();
+  if (!loading) return null;
   const data = {
     title: "Working at SkyField",
     description:
@@ -14,16 +18,19 @@ export default function page() {
   return (
     <div>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
+        title={title || data?.title}
+        description={description || data?.description}
         link={data?.link}
         video={data?.video}
       />
       <div className="bg-gray-50">
-        <OpenPosition />
-        <WhyJoin />
+        <OpenPosition sectionData={section1} />
+        <WhyJoin sectionData={section2} section2Data={section3} />
       </div>
-
     </div>
   );
-}
+};
+
+
+
+export default page;

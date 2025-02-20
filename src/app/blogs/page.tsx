@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import HeroSection from "../../components/home/HeroSection";
 import Blogs from "@/components/blogs/Blog";
 
-export default function page() {
+const page = () => {
   const data = {
     title: "Our Latest Blogs",
     description:
