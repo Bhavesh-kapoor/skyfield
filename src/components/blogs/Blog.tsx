@@ -50,26 +50,26 @@ const Blogs = () => {
       date: "Jan 02 2025",
     },
     {
-        title: "The Higher the Camera, The Better Videos",
-        description:
-          "Our team of experts will help you to extend your drone operations to new heights.",
-        image: "/images/roadtree.png",
-        date: "Jan 02 2025",
-      },
-      {
-        title: "The Higher the Camera, The Better Videos",
-        description:
-          "Our team of experts will help you to extend your drone operations to new heights.",
-        image: "/images/trees.png",
-        date: "Jan 02 2025",
-      },
-      {
-        title: "The Higher the Camera, The Better Videos",
-        description:
-          "Our team of experts will help you to extend your drone operations to new heights.",
-        image: "/images/ocean.png",
-        date: "Jan 02 2025",
-      },
+      title: "The Higher the Camera, The Better Videos",
+      description:
+        "Our team of experts will help you to extend your drone operations to new heights.",
+      image: "/images/roadtree.png",
+      date: "Jan 02 2025",
+    },
+    {
+      title: "The Higher the Camera, The Better Videos",
+      description:
+        "Our team of experts will help you to extend your drone operations to new heights.",
+      image: "/images/trees.png",
+      date: "Jan 02 2025",
+    },
+    {
+      title: "The Higher the Camera, The Better Videos",
+      description:
+        "Our team of experts will help you to extend your drone operations to new heights.",
+      image: "/images/ocean.png",
+      date: "Jan 02 2025",
+    },
   ];
   return (
     <div className="max-w-7xl lg:max-w-6xl relative m-auto p-4">
@@ -85,7 +85,7 @@ const Blogs = () => {
             >
               <div className=" h-80  w-full flex justify-center">
                 <Image
-                  src={data?.image} // Ensure this image exists in the public folder
+                  src={data?.image || "/images/pro1.png"} // Ensure this image exists in the public folder
                   alt="Explore Image"
                   width={800}
                   height={630}

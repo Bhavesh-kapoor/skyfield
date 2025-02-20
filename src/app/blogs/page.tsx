@@ -2,6 +2,7 @@
 import React from "react";
 import HeroSection from "../../components/home/HeroSection";
 import Blogs from "@/components/blogs/Blog";
+import { getBlogData } from "@/utils/server";
 
 const page = () => {
   const data = {
@@ -14,14 +15,16 @@ const page = () => {
   return (
     <div>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
+        title={ data?.title}
+        description={ data?.description}
         link={data?.link}
-        video={data?.video}
+        video={ data?.video}
       />
       <div className="bg-gray-50">
         <Blogs />
       </div>
     </div>
   );
-}
+};
+
+export default page;

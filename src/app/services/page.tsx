@@ -5,9 +5,20 @@ import Innovative from "@/components/services/Innovative";
 import SkillFields from "@/components/services/SkillFields";
 import Specialization from "@/components/services/Specialization";
 import { lexendDeca } from "@/data/font";
+import { getServiceData } from "@/utils/server";
 import React from "react";
 
-export default function page() {
+const page = async () => {
+  const {
+    loading,
+    title,
+    description,
+    section1,
+    section3,
+    section4,
+    section5
+  } = await getServiceData();
+  if (!loading) return null;
   const data = {
     title: "Services",
     description:
@@ -18,16 +29,18 @@ export default function page() {
   return (
     <div className={`${lexendDeca?.className}`}>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
+        title={title || data?.title}
+        description={description || data?.description}
         link={data?.link}
         video={data?.video}
       />
-      <SkillFields />
-      <Innovation />
-      <Advantages />
-      <Innovative />
-      <Specialization />
+      <SkillFields sectionData={section1} />
+      <Innovation sectionData={section1} />
+      <Advantages sectionData={section3} />
+      <Innovative sectionData={section4} />
+      <Specialization sectionData={section5} />
     </div>
   );
-}
+};
+
+export default page;

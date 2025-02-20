@@ -1,3 +1,4 @@
+import React from "react";
 import DroneSystem from "@/components/application/DroneSystem";
 import Essentials from "@/components/application/Essentials";
 import ProductSection from "@/components/application/ProudctSection";
@@ -26,17 +27,19 @@ if (!loading) return null;
   return (
     <div>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
+        title={title || data?.title}
+        description={description || data?.description}
         link={data?.link}
-        video={data?.video}
+        video={"/videos/heroSection.mp4"}
       />
       <div className="bg-gray-50">
-        <ProductSection />
-        <DroneSystem />
+        <ProductSection sectionData={section1} />
+        <DroneSystem sectionData={section2} />
       </div>
-      <Essentials />
-      <TechApplication />
+      <Essentials  />
+      <TechApplication sectionData={section3} />
     </div>
   );
-}
+};
+
+export default page;

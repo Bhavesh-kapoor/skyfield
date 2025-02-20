@@ -2,8 +2,9 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ISection } from "@/utils/server";
 
-export default function   CommandCenter() {
+const CommandCenter = ({ sectionData }: { sectionData: ISection |undefined}) => {
   const rapidDeployment = [
     { title: "Operational in under 60 seconds", position: "top-left" },
     { title: "Vehicle-agnostic platform", position: "top-right" },
@@ -23,10 +24,12 @@ export default function   CommandCenter() {
     <div className=" hidden lg:block max-w-7xl mx-auto py-10 px-6 text-white">
       {/* Header Section */}
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold">Mobile Intelligence Hub</h2>
+        <h2 className="text-3xl font-bold">
+          {sectionData?.title || "Mobile Intelligence Hub"}
+        </h2>
         <p className="text-gray-400 mt-2">
-          Our advanced tactical command vehicle combines mobility with
-          cutting-edge command and control capabilities.
+          {sectionData?.description ||
+            " Our advanced tactical command vehicle combines mobility with cutting-edge command and control capabilities."}
         </p>
       </div>
 
@@ -69,7 +72,6 @@ export default function   CommandCenter() {
             transition={{ duration: 0.8 }}
             className="relative w-72 md:w-96 h-96 aspect-square rounded-full overflow-hidden"
           >
-            
             <Image
               src="/images/techInteligence.png"
               alt="Command Center"
@@ -112,4 +114,6 @@ export default function   CommandCenter() {
       </div>
     </div>
   );
-}
+};
+
+export default CommandCenter;

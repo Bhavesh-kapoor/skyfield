@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 
-const Essentials: React.FC = () => {
+const Essentials = () => {
   const clients = [
     {
       id: 1,
@@ -11,6 +9,7 @@ const Essentials: React.FC = () => {
       logo: "/images/flotingTyre.png",
     },
     {
+      
       id: 2,
       name: "Disaster Response",
       desc: "Resource management and coordination of operations in disaster situations.",
@@ -29,8 +28,6 @@ const Essentials: React.FC = () => {
       logo: "/images/exit.png",
     },
   ];
-
-
 
   return (
     <section className="py-12 max-w-7xl mx-auto p-4 lg:p-0">
@@ -59,7 +56,7 @@ const Essentials: React.FC = () => {
               className={`flex flex-col justify-center items-center h-64 rounded-lg p-6 bg-transparent`}
             >
               <Image
-                src={client.logo}
+                src={client.logo||"/images/wave.png"}
                 width={5000}
                 height={5000}
                 alt={`Client ${index + 1}`}
