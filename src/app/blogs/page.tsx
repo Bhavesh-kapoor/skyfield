@@ -15,17 +15,10 @@ const page = () => {
   return (
     <div>
       <HeroSection
-<<<<<<< Updated upstream
-        title={ data?.title}
-        description={ data?.description}
+        title={title || data?.title}
+        description={description || data?.description}
         link={data?.link}
-        video={ data?.video}
-=======
-        title={data?.title}
-        description={data?.description}
-        link={data?.link}
-        video={data?.video}
->>>>>>> Stashed changes
+        video={videoUrl || data?.video}
       />
       <div className="bg-gray-50">
         <Blogs />
