@@ -15,10 +15,10 @@ const page = () => {
   return (
     <div>
       <HeroSection
-        title={title || data?.title}
-        description={description || data?.description}
+        title={data?.title}
+        description={data?.description}
         link={data?.link}
-        video={videoUrl || data?.video}
+        video={data?.video}
       />
       <div className="bg-gray-50">
         <Blogs />
@@ -28,4 +28,3 @@ const page = () => {
 };
 
 export default page;
-
