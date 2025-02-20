@@ -5,7 +5,7 @@ import ProductSection from "@/components/application/ProudctSection";
 import TechApplication from "@/components/application/TechApplication";
 import HeroSection from "@/components/home/HeroSection";
 import { getApplicationData } from "@/utils/server";
-import React from "react";
+
 
 const page = async () => {
 const {
