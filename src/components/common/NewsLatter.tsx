@@ -23,7 +23,7 @@ const NewsLatter = () => {
     // Simulate API call for subscribing
     try {
       // Assuming you are sending the email to an API endpoint
-      const response = await fetch("http://localhost:5000/api/latter", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/latter`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
