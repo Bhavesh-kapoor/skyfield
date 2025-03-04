@@ -2,12 +2,12 @@ import React from "react";
 import HeaderSection from "../common/HeaderSection";
 import Image from "next/image";
 import InfoCard2 from "./Infocard2";
-import { ISection } from "@/utils/server";
+import { ISection, SectionResponse } from "@/utils/server";
 
 export default function Next({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) {
   const datas = [
     {
@@ -43,7 +43,7 @@ export default function Next({
     <div className="max-w-7xl p-4 m-auto">
       <HeaderSection
         title={sectionData?.title || "Revolutionizing Aerial Operations"}
-        subTitle={sectionData?.subtitle || " Advanced Drone System"}
+        subTitle={sectionData?.subTitle || " Advanced Drone System"}
         description={
           sectionData?.description ||
           "The Skyfield Advanced Drone System combines mother-drone technology with specialized indoor drones for unprecedented operational flexibility:"
@@ -52,7 +52,13 @@ export default function Next({
 
       <div className="w-full lg:p-16 mx-auto">
         <Image
-          src="/images/techNext.png"
+          src={
+            sectionData?.coverImage
+              ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.coverImage
+                  .replace(/\\/g, "/")
+                  .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+              : "/images/droneArmy.png" // Fallback image if no cover image
+          }
           width={1200}
           height={300}
           alt="Image 1"

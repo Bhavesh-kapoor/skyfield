@@ -1,10 +1,14 @@
 import { lexendDeca } from "@/data/font";
-import { ISection } from "@/utils/server";
+import { ISection, SectionResponse } from "@/utils/server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Vision = ({ sectionData }: { sectionData: ISection | undefined }) => {
+const Vision = ({
+  sectionData,
+}: {
+  sectionData: SectionResponse | undefined;
+}) => {
   if (!sectionData) return null;
   return (
     <section
@@ -13,8 +17,14 @@ const Vision = ({ sectionData }: { sectionData: ISection | undefined }) => {
       {/* Left Column - Image */}
       <div className="w-4/5  lg:w-2/5 flex justify-center mb-6 lg:mb-0">
         <Image
-          src={ "/images/product3.png"} // Ensure this image exists in the public folder
-          alt="Explore Image"
+             src={
+              sectionData?.coverImage
+                ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.coverImage
+                    .replace(/\\/g, "/")
+                    .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                : "/images/droneArmy.png" // Fallback image if no cover image
+            }
+          alt={sectionData?.title || "Explore Image"}
           width={800}
           height={630}
           className="rounded-none shadow-lg w-80 2xl:w-fulla lg:w-96 h-[50vh] lg:h-[85vh] 2xl:h-[30vh] object-center max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl object-cover"
@@ -31,14 +41,14 @@ const Vision = ({ sectionData }: { sectionData: ISection | undefined }) => {
           {sectionData?.title || "VISION"}
         </h2>
         <h2 className="text-lg sm:text-xl md:text-xl lg:text-3xl xl:text-3xl font-bold text-gray-50 leading-7">
-          {sectionData?.subtitle || "Our Vision"}
+          {sectionData?.subTitle || "Our Vision"}
         </h2>
         <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-3 md:line-clamp-none text-gray-900 mt-4 leading-8">
           {sectionData?.description ||
             "Our mission is to provide the best possible experience for our customers."}
         </p>
         <Link
-          href={"/about-us"}
+          href={sectionData?.link || "/about-us"}
           className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-gray-900 border-gray-900 rounded-none shadow-md border transition"
         >
           Explore More

@@ -2,9 +2,10 @@ import React from "react";
 import HeaderSection from "../common/HeaderSection";
 import { GoArrowUpRight } from "react-icons/go";
 import Link from "next/link";
-import { ISection } from "@/utils/server";
+import { ISection, SectionContent, SectionResponse } from "@/utils/server";
+import { link } from "fs";
 
-export default function Advancing({ sectionData }: { sectionData: ISection|undefined }) {
+export default function Advancing({ sectionData }: { sectionData: SectionContent |undefined }) {
   const data = {
     title: "Skyfield - Advancing Defense Technology for Tomorrow's Challenges",
     description:
@@ -20,7 +21,7 @@ export default function Advancing({ sectionData }: { sectionData: ISection|undef
         description={sectionData?.description || data?.description}
       />
       <Link
-        href="/contact-us"
+        href={sectionData?.link || "/contact-us"}
         className={` md:w-2/5 m-auto px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center`}
       >
         Get a Demo Today{" "}

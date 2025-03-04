@@ -3,12 +3,12 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import HeaderSection from "../common/HeaderSection";
-import { ISection } from "@/utils/server";
+import { ISection, SectionContent, SectionResponse } from "@/utils/server";
 
 const DroneSystem = ({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) => {
   const features = [
     {
@@ -48,7 +48,7 @@ const DroneSystem = ({
           sectionData?.title ||
           "Advanced Drone System combines mother-drone technology"
         }
-        subTitle={sectionData?.subtitle || " Advanced Drone System"}
+        subTitle={sectionData?.subTitle || " Advanced Drone System"}
         description={
           sectionData?.description ||
           "Breakthrough Innovation in Integrated Drone Systems Skyfield presents the next generation of operational drone systems. Our advanced system combines an innovative mother drone serving as a launch and communication station, with specialized Indoor drones for missions inside buildings and complex environments. Skyfield, a leader in advanced drone solutions, brings cutting-edge technology to the modern battlefield."
@@ -68,7 +68,15 @@ const DroneSystem = ({
               {
                 <div className="w-72 md:w-96 lg:w-[450px] aspect-square rounded-full overflow-hidden">
                   <Image
-                    src={"/images/drone.png"}
+                    src={
+                      sectionData?.coverImage
+                        ? `${
+                            process.env.NEXT_PUBLIC_API_URL
+                          }${sectionData.coverImage
+                            .replace(/\\/g, "/")
+                            .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                        : "/images/droneArmy.png" // Fallback image if no cover image
+                    }
                     alt="Drone"
                     width={450}
                     height={450}

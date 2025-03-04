@@ -2,9 +2,9 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ISection } from "@/utils/server";
+import { ISection, SectionResponse } from "@/utils/server";
 
-const CommandCenter = ({ sectionData }: { sectionData: ISection |undefined}) => {
+const CommandCenter = ({ sectionData }: { sectionData: SectionResponse |undefined}) => {
   const rapidDeployment = [
     { title: "Operational in under 60 seconds", position: "top-left" },
     { title: "Vehicle-agnostic platform", position: "top-right" },

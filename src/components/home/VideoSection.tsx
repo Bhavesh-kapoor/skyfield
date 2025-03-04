@@ -1,8 +1,7 @@
-import { ISection } from "@/utils/server";
+import { ISection, SectionContent } from "@/utils/server";
 import React from "react";
 
-const VideoSection = ({sectionData}:{sectionData:ISection}) => {
-
+const VideoSection = ({ sectionData }: { sectionData: SectionContent }) => {
   if (!sectionData) return null;
 
   return (
@@ -20,7 +19,7 @@ const VideoSection = ({sectionData}:{sectionData:ISection}) => {
           playsInline
         >
           <source
-            src={`${ "/videos/videoSection.mp4"}`}
+            src={`${sectionData?.video || "/videos/videoSection.mp4"}`}
             type="video/mp4"
           />
           Your browser does not support the video tag.

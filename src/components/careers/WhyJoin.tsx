@@ -1,4 +1,4 @@
-import { ISection } from "@/utils/server";
+import { ISection, SectionContent } from "@/utils/server";
 import Image from "next/image";
 import React from "react";
 
@@ -6,8 +6,8 @@ export default function WhyJoin({
   sectionData,
   section2Data,
 }: {
-  sectionData: ISection | undefined;
-  section2Data: ISection | undefined;
+  sectionData: SectionContent | undefined;
+  section2Data: SectionContent | undefined;
 }) {
   return (
     <div className="max-w-7xl lg:max-w-6xl  m-auto p-4  lg:py-24">
@@ -25,8 +25,8 @@ export default function WhyJoin({
         {/* Left Column - Image */}
         <div className="lg:w-2/4 w-full h-[50vh] lg:h-[80vh] 2xl:h-[30vh] flex justify-center">
           <Image
-            src="/images/whyJoin.png" // Ensure this image exists in the public folder
-            alt="Explore Image"
+            src={"/images/whyJoin.png"} // Ensure this image exists in the public folder
+            alt={sectionData?.title || "Explore Image"}
             width={800}
             height={630}
             className="rounded-none shadow-lg w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl object-cover"
@@ -41,11 +41,11 @@ export default function WhyJoin({
             Who We Are{" "}
           </h2> */}
           <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-gray-80 leading-7">
-            {sectionData?.subContents[0]?.title || "Company Culture"}
+            {sectionData?.title || "Company Culture"}
           </h2>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-800 mt-4 leading-8">
-            {sectionData?.subContents[0]?.description ||
+            {sectionData?.description ||
               " We are a team of passionate individuals who are dedicated to making a difference in the world."}
           </p>
           {/* <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-800 mt-4 leading-8">
@@ -66,8 +66,8 @@ export default function WhyJoin({
         {/* Left Column - Image */}
         <div className="lg:w-2/4 w-full h-[50vh] lg:h-[80vh] 2xl:h-[30vh] flex justify-center">
           <Image
-            src="/images/benifit.png" // Ensure this image exists in the public folder
-            alt="Explore Image"
+            src={"/images/benifit.png"} // Ensure this image exists in the public folder
+            alt={section2Data?.title || "Explore Image"}
             width={800}
             height={630}
             className="rounded-none shadow-lg w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl object-cover"
@@ -82,11 +82,11 @@ export default function WhyJoin({
             Who We Are{" "}
           </h2> */}
           <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl font-bold text-gray-80 leading-7">
-            {sectionData?.subContents[1]?.title || "Perks & Benefits"}
+            {section2Data?.title || "Perks & Benefits"}
           </h2>
 
           <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-800 mt-4 leading-8">
-            {sectionData?.subContents[1]?.description ||
+            {section2Data?.description ||
               " We offer a range of benefits to support your well-being and career growth."}
           </p>
           {/* <p className="text-base sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-800 mt-4 leading-8">

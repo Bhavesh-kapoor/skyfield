@@ -1,4 +1,4 @@
-import { ISection, SubContent } from "@/utils/server";
+import { ISection, SectionContent, SectionResponse, SubContent } from "@/utils/server";
 import Link from "next/link";
 import React from "react";
 import { FaUser } from "react-icons/fa";
@@ -6,7 +6,7 @@ import { FaUser } from "react-icons/fa";
 export default function OpenPosition({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) {
   const datas = [
     {
@@ -52,21 +52,21 @@ export default function OpenPosition({
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {sectionData?.subContents &&
-          sectionData?.subContents?.map((data: SubContent, index: number) => (
+        {sectionData?.contents &&
+          sectionData?.contents?.map((data: SectionContent, index: number) => (
             <div
               className="border border-gray-900 text-left col-span-1 text-gray-800 p-6  flex flex-col justify-center items-start"
               key={index}
             >
               <div className="w-full flex justify-start items-center mb-4">
                 <Link
-                  href={"/contact-us"}
+                  href={data?.link || "/contact-us"}
                   className="bg-gray-50 text-gray-800 rounded-full border-gray-900 border-[1.3px] flex justify-center items-center text-sm w-10 h-10"
                 >
                   <FaUser width={16} height={16} />
                 </Link>
               </div>
-              <h2 className="text-md font-semibold mb-2">{data?.title}</h2>
+              <h2 className="text-md font-semibold mb-2">{data?.title || ""}</h2>
               <p className="text-xs mb-6">
                 <span className="mx-1">-Onsite</span>
                 <span className="mx-1">-Fulltime</span>

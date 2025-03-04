@@ -9,15 +9,17 @@ import { getServiceData } from "@/utils/server";
 import React from "react";
 
 const page = async () => {
+  const { loading, servicePageData }: any = await getServiceData();
   const {
-    loading,
     title,
+    subTitle,
     description,
-    section1,
-    section3,
-    section4,
-    section5
-  } = await getServiceData();
+    coverImage,
+    videoUrl,
+    slug,
+    link,
+    contents,
+  } = servicePageData[0];
   if (!loading) return null;
   const data = {
     title: "Services",
@@ -31,14 +33,24 @@ const page = async () => {
       <HeroSection
         title={title || data?.title}
         description={description || data?.description}
-        link={data?.link}
-        video={data?.video}
+        link={link || "/contact-us"}
+        video={videoUrl || "/videos/heroSection.mp4"}
       />
-      <SkillFields sectionData={section1} />
-      <Innovation sectionData={section1} />
-      <Advantages sectionData={section3} />
-      <Innovative sectionData={section4} />
-      <Specialization sectionData={section5} />
+      {servicePageData && servicePageData?.length > 1 && (
+        <SkillFields sectionData={servicePageData[1]} />
+      )}
+      {servicePageData && servicePageData?.length > 2 && (
+        <Innovation sectionData={servicePageData[2]} />
+      )}
+      {servicePageData && servicePageData?.length > 3 && (
+        <Advantages sectionData={servicePageData[3]} />
+      )}
+      {servicePageData && servicePageData?.length > 4 && (
+        <Innovative sectionData={servicePageData[4]} />
+      )}
+      {servicePageData && servicePageData?.length > 5 && (
+        <Specialization sectionData={servicePageData[5]} />
+      )}
     </div>
   );
 };

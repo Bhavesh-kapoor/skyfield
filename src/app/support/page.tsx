@@ -1,8 +1,8 @@
 import React from "react";
 import HeroSection from "../../components/home/HeroSection";
-import ContactUsForm from "@/components/contact/ContactUsForm";
 import SupportCard from "@/components/support/SupportCard";
 import Faq from "@/components/support/Faq";
+import ContactUsForm from "@/components/contact/ContactUsForm";
 
 export default function page() {
   const data = {
@@ -21,10 +21,9 @@ export default function page() {
         video={data?.video}
       />
       <div className="bg-gray-50">
-
-      <SupportCard />
-      <ContactUsForm details={false} />
-      <Faq />
+        <SupportCard />
+        <ContactUsForm details={false} />
+        <Faq />
       </div>
     </div>
   );

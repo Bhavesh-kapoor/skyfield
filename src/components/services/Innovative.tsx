@@ -1,6 +1,6 @@
 "use client";
 
-import { ISection } from "@/utils/server";
+import { ISection, SectionResponse } from "@/utils/server";
 import Image from "next/image";
 
 // const features = [
@@ -30,15 +30,15 @@ import Image from "next/image";
 const Innovative = ({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) => {
   return (
     <div className="text-white p-5  lg:p-20 flex flex-col lg:flex-row items-start gap-10 max-w-7xl m-auto  ">
       {/* Image Section */}
       <div className="w-full lg:w-1/3 ">
         <Image
-          src="/images/innovative.png"
-          alt="Indoor Drone"
+          src={sectionData?.coverImage || "/images/innovative.png"}
+          alt={sectionData?.title || "Indoor Drone"}
           width={500}
           height={500}
           className="object-cover h-[80vh] 2xl:h-[70vh] w-full rounded-none"
@@ -54,8 +54,8 @@ const Innovative = ({
 
         {/* Feature List */}
         <div className="flex flex-col gap-4">
-          {sectionData?.subContents &&
-            sectionData?.subContents.map((feature, index) => (
+          {sectionData?.contents &&
+            sectionData?.contents.map((feature, index) => (
               <div key={index} className="flex flex-col lg:flex-row">
                 <div className="bg-[#FFA7A7] text-black font-thin p-3  lg:w-44 text-left">
                   {feature.title}

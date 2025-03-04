@@ -1,4 +1,9 @@
-import { ISection, SubContent } from "@/utils/server";
+import {
+  ISection,
+  SectionContent,
+  SectionResponse,
+  SubContent,
+} from "@/utils/server";
 import Link from "next/link";
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
@@ -6,7 +11,7 @@ import { GoArrowUpRight } from "react-icons/go";
 export default function Specialization({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) {
   // const datas = [
   //   {
@@ -34,7 +39,7 @@ export default function Specialization({
     <div className="max-w-7xl lg:max-w-6xl  m-auto p-4 py-24">
       <div className="m-auto lg:w-3/5 text-center mb-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          {sectionData?.subtitle || "Key Applications"}
+          {sectionData?.subTitle || "Key Applications"}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
           {sectionData?.title || "Our Specializations"}
@@ -45,17 +50,17 @@ export default function Specialization({
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {sectionData?.subContents &&
-          sectionData?.subContents?.map((data: SubContent, index: number) => (
+        {sectionData?.contents &&
+          sectionData?.contents?.map((data: SectionContent, index: number) => (
             <div
               className="border text-left col-span-1 text-gray-50 p-8 h-64 flex flex-col justify-end items-startw"
               key={index}
             >
-              <h2 className="text-sm font-semibold mb-2">{data?.title}</h2>
-              <p className="text-xs mb-6">{data?.description}</p>
+              <h2 className="text-sm font-semibold mb-2">{data?.title || ''}</h2>
+              <p className="text-xs mb-6">{data?.description || ''}</p>
               <div className="w-full flex justify-end items-center">
                 <Link
-                  href={"/contact-us"}
+                  href={data?.link || "/contact-us"}
                   className="bg-gray-50 text-gray-800 rounded-full text-2xl p-1.5 w-10 h-10"
                 >
                   <GoArrowUpRight width={30} height={30} />

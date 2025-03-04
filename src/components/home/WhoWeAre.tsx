@@ -15,7 +15,13 @@ const WhoWeAre = ({ sectionData }: { sectionData: ISection }) => {
       {/* Left Column - Image */}
       <div className="lg:w-2/5 w-full flex justify-center">
         <Image
-          src={"/images/whoweare.png"}
+          src={
+            sectionData?.image1
+              ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.image1
+                  .replace(/\\/g, "/")
+                  .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+              : "/images/droneArmy.png" // Fallback image if no cover image
+          }
           alt="Who We Are Image"
           width={800}
           height={630}

@@ -1,6 +1,11 @@
 import Image from "next/image";
 import HeaderSection from "../common/HeaderSection";
-import { ISection, SubContent } from "@/utils/server";
+import {
+  ISection,
+  SectionContent,
+  SectionResponse,
+  SubContent,
+} from "@/utils/server";
 
 // const features = [
 //   {
@@ -31,7 +36,7 @@ import { ISection, SubContent } from "@/utils/server";
 const ProductSection = ({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) => {
   if (!sectionData) return null;
   return (
@@ -41,7 +46,7 @@ const ProductSection = ({
           sectionData.title ||
           "Operational Excellence in Military Strategy and Tactics"
         }
-        subTitle={sectionData.subtitle || " Advanced Drone System"}
+        subTitle={sectionData.subTitle || " Advanced Drone System"}
         description={
           sectionData.description ||
           "The Skyfield Advanced Drone System combines mother-drone technology with specialized indoor drones for unprecedented operational flexibility:"
@@ -52,8 +57,14 @@ const ProductSection = ({
         {/* Image Section */}
         <div className="w-full lg:w-2/5 ">
           <Image
-            src={"/images/droneAlon.png"}
-            alt="Indoor Drone"
+            src={
+              sectionData?.coverImage
+                ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.coverImage
+                    .replace(/\\/g, "/")
+                    .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                : "/images/droneArmy.png" // Fallback image if no cover image
+            }
+            alt={sectionData?.title || "Indoor Drone"}
             width={500}
             height={500}
             className="object-cover md:h-[80vh] 2xl:h-[28vh] rounded-none w-full lg:w-auto"
@@ -62,27 +73,17 @@ const ProductSection = ({
 
         {/* Content Section */}
         <div className="w-full lg:w-3/5 pt-10">
-          {/* <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-2">
-            Innovative Indoor Drones
-          </h2>
-          <p className="text-gray-300 mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p> */}
-
           {/* Feature List */}
           <div className="flex flex-col gap-4">
-            {sectionData.subContents &&
-              sectionData.subContents.map(
-                (feature: SubContent, index: number) => (
+            {sectionData.contents &&
+              sectionData.contents.map(
+                (feature: SectionContent, index: number) => (
                   <div key={index} className="flex flex-col lg:flex-row">
                     <div className="bg-[#FFA7A7] text-black font-thin p-3  lg:w-44 text-left">
-                      {feature.title}
+                      {feature.title || "Feature Title"}
                     </div>
                     <div className="border text-gray-700 border-gray-500 p-3 flex-1">
-                      {feature.description}
+                      {feature.description || "Feature Description"}
                     </div>
                   </div>
                 )

@@ -7,8 +7,13 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "example.com",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
     ],
   },
+
   async rewrites() {
     return [
       {

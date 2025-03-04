@@ -4,9 +4,9 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ISection } from "@/utils/server";
+import { Content, ISection, SectionResponse } from "@/utils/server";
 
-const OurPartners = ({ sectionData }: { sectionData: ISection }) => {
+const OurPartners = ({ sectionData }: { sectionData: SectionResponse }) => {
   if (!sectionData) return null;
   // let clients = [
   //   { id: 1, name: "Android", coverImage:"", logo: "/images/client1.png" },
@@ -14,7 +14,8 @@ const OurPartners = ({ sectionData }: { sectionData: ISection }) => {
   //   { id: 3, name: "FireStore", coverImage:"",logo: "/images/client3.png" },
   //   { id: 4, name: "Java", coverImage:"", logo: "/images/client4.png" },
   // ];
-  const clients = sectionData.subContents;
+  const clients = sectionData?.contents;
+  console.log(clients);
   return (
     <section className="py-12 relative max-w-7xl m-auto p-4 lg:p-0">
       <div className="absolute top-32 inset-0 flex justify-center items-center">
@@ -22,7 +23,7 @@ const OurPartners = ({ sectionData }: { sectionData: ISection }) => {
       </div>
       <div className="m-auto lg:w-3/5 text-center mb-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          {sectionData?.subtitle || "Our Commitments"}{" "}
+          {sectionData?.subTitle || "Our Commitments"}{" "}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
           {sectionData?.title || "Our Partners"}{" "}
@@ -45,18 +46,29 @@ const OurPartners = ({ sectionData }: { sectionData: ISection }) => {
               duration: 35,
             }}
           >
-            {/* Map clients to show in pairs */}
-            {[...clients, ...clients, ...clients].map((client, index) => (
-              <div key={index} className="flex-shrink-0 w-36 h-32w rounded-lg">
-                <Image
-                  src={"/images/client1.png"}
-                  width={300}
-                  height={100}
-                  alt={`Client ${index + 1}`}
-                  className="w-full h-full object-contain p-2"
-                />
-              </div>
-            ))}
+            {clients &&
+              [...clients, ...clients, ...clients].map((client, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-36 h-32w rounded-lg"
+                >
+                  <Image
+                    src={
+                      client?.image
+                        ? `${
+                            process.env.NEXT_PUBLIC_API_URL
+                          }${client.image
+                            .replace(/\\/g, "/")
+                            .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                        : "/images/droneArmy.png" // Fallback image if no cover image
+                    }
+                    width={300}
+                    height={100}
+                    alt={client?.title}
+                    className="w-full h-full object-contain p-2"
+                  />
+                </div>
+              ))}
           </motion.div>
         </div>
       </div>

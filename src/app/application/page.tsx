@@ -5,18 +5,21 @@ import ProductSection from "@/components/application/ProudctSection";
 import TechApplication from "@/components/application/TechApplication";
 import HeroSection from "@/components/home/HeroSection";
 import { getApplicationData } from "@/utils/server";
-
+import { section } from "framer-motion/client";
 
 const page = async () => {
-const {
-  loading,
-  title,
-  description,
-  section1,
-  section2,
-  section3,
-} = await getApplicationData();
-if (!loading) return null;
+  const { loading, applicationPageData }: any = await getApplicationData();
+  const {
+    title,
+    subTitle,
+    description,
+    coverImage,
+    videoUrl,
+    slug,
+    link,
+    contents,
+  } = applicationPageData[0];
+  if (!loading) return null;
   const data = {
     title: "Our Applications",
     description:
@@ -29,16 +32,16 @@ if (!loading) return null;
       <HeroSection
         title={title || data?.title}
         description={description || data?.description}
-        link={data?.link}
-        video={"/videos/heroSection.mp4"}
+        link={link || data?.description}
+        video={videoUrl || "/videos/heroSection.mp4"}
       />
-      <div className="bg-gray-50">
-        <ProductSection sectionData={section1} />
-        <DroneSystem sectionData={section2} />
+     <div className="bg-gray-50">
+        {applicationPageData && applicationPageData?.length > 1 && <ProductSection sectionData={applicationPageData[1]} />}
+        {applicationPageData && applicationPageData?.length > 2 && <DroneSystem sectionData={applicationPageData[2]} />}
       </div>
-      <Essentials  />
-      <TechApplication sectionData={section3} />
-    </div>
+        {applicationPageData && applicationPageData?.length > 3 && <Essentials sectionData={applicationPageData[3]} />}
+        {applicationPageData && applicationPageData?.length > 4 && <TechApplication sectionData={applicationPageData[4]} />}
+     </div>
   );
 };
 

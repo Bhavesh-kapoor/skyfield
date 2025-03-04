@@ -8,15 +8,17 @@ import { lexendDeca } from "@/data/font";
 import { getAboutData } from "@/utils/server";
 
 const page = async () => {
+  const { loading, aboutPageData }: any = await getAboutData();
   const {
-    loading,
     title,
+    subTitle,
     description,
-    section1,
-    section2,
-    section3,
-    section4,
-  } = await getAboutData();
+    coverImage,
+    videoUrl,
+    slug,
+    link,
+    contents,
+  } = aboutPageData[0];
   if (!loading) return null;
   const data = {
     title: "About Us",
@@ -31,16 +33,26 @@ const page = async () => {
         title={title || data?.title}
         description={description || data?.description}
         video={data?.video}
-        link={"/contact"}
+        link={link || "/contact-us"}
       />
       <div className="bg-[#b0b0b08c]">
-        <Vision sectionData={section1} />
-        <Mission sectionData={section2} />
+        {aboutPageData && aboutPageData?.length > 1 && (
+          <Vision sectionData={aboutPageData[1]} />
+        )}
+        {aboutPageData && aboutPageData?.length > 2 && (
+          <Mission sectionData={aboutPageData[2]} />
+        )}
       </div>
-      <OurStory sectionData={section3} />
-      <WeDone />
+      {aboutPageData && aboutPageData?.length > 3 && (
+        <OurStory sectionData={aboutPageData[3]} />
+      )}
+      {aboutPageData && aboutPageData?.length > 4 && (
+        <WeDone sectionData={aboutPageData[4]} />
+      )}
       <div className="bg-[#b0b0b08c]">
-        <LeaderShips sectionData={section4} />
+        {aboutPageData && aboutPageData?.length > 5 && (
+          <LeaderShips sectionData={aboutPageData[5]} />
+        )}
       </div>
     </div>
   );

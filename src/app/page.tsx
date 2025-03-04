@@ -10,18 +10,18 @@ import { lexendDeca } from "@/data/font";
 import { getHomeData } from "@/utils/server";
 
 const Home = async () => {
+  const { loading, homePageData }: any = await getHomeData();
   const {
-    loading,
     title,
+    subTitle,
     description,
-    section1,
-    section2,
-    section3,
-    section4,
-    section5,
-    section6,
-    section7,
-  } = await getHomeData();
+    coverImage,
+    videoUrl,
+    slug,
+    link,
+    contents,
+  } = homePageData[0];
+
   if (!loading) return null;
   const data = {
     title: "Your All In One Solution For Unmanned System Force",
@@ -30,21 +30,36 @@ const Home = async () => {
     video: "/videos/heroSection.mp4",
     link: "/",
   };
+
   return (
     <div className={lexendDeca.className}>
       <HeroSection
         title={title || data?.title}
         description={description || data?.description}
-        video={ data?.video}
-        link={"/contact"}
+        video={videoUrl || data?.video}
+        link={link || "/contact-us"}
       />
-      {section1 && <WhoWeAre sectionData={section1} />}
-      {section2 && <Service sectionData={section2} />}
-      {section3 && <VideoSection sectionData={section3} />}
-      {section4 && <WeBestSection sectionData={section4} />}
-      {section5 && <OurPartners sectionData={section5} />}
-      {section6 && <Why sectionData={section6} />}
-      {section7 && <LatestNews sectionData={section7} />}
+      {homePageData && homePageData?.length > 1 && (
+        <WhoWeAre sectionData={homePageData[1]} />
+      )}
+      {homePageData && homePageData?.length > 2 && (
+        <Service sectionData={homePageData[2]} />
+      )}
+      {homePageData && homePageData?.length > 3 && (
+        <VideoSection sectionData={homePageData[3]} />
+      )}
+      {homePageData && homePageData?.length > 4 && (
+        <WeBestSection sectionData={homePageData[4]} />
+      )}
+      {homePageData && homePageData?.length > 5 && (
+        <OurPartners sectionData={homePageData[5]} />
+      )}
+      {homePageData && homePageData?.length > 6 && (
+        <Why sectionData={homePageData[6]} />
+      )}
+      {homePageData && homePageData?.length > 7 && (
+        <LatestNews sectionData={homePageData[7]} />
+      )}
     </div>
   );
 };

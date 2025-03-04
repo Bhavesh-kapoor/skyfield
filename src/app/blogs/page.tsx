@@ -1,10 +1,22 @@
-"use client";
 import React from "react";
 import HeroSection from "../../components/home/HeroSection";
 import Blogs from "@/components/blogs/Blog";
-import { getBlogData } from "@/utils/server";
+import { getBlogData, getBlogsListData } from "@/utils/server";
 
-const page = () => {
+const page = async () => {
+    const { loading, blogPageData }: any = await getBlogData();
+    console.log(blogPageData)
+    const {
+      title,
+      subTitle,
+      description,
+      coverImage,
+      videoUrl,
+      slug,
+      link,
+      contents,
+    } = blogPageData[0];
+    if (!loading) return null;
   const data = {
     title: "Our Latest Blogs",
     description:
@@ -15,10 +27,10 @@ const page = () => {
   return (
     <div>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
-        link={data?.link}
-        video={data?.video}
+        title={title||data?.title}
+        description={description||data?.description}
+        link={link||data?.link}
+        video={videoUrl||data?.video}
       />
       <div className="bg-gray-50">
         <Blogs />
