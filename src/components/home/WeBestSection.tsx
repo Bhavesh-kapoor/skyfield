@@ -1,10 +1,15 @@
-import { ISection, SubContent } from "@/utils/server";
+import {
+  ISection,
+  SectionContent,
+  SectionResponse,
+  SubContent,
+} from "@/utils/server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 
-const WeBestSection = ({ sectionData }: { sectionData: ISection }) => {
+const WeBestSection = ({ sectionData }: { sectionData: SectionResponse }) => {
   if (!sectionData) return null;
   // const datas = [
   //   {
@@ -33,7 +38,7 @@ const WeBestSection = ({ sectionData }: { sectionData: ISection }) => {
       </div>
       <div className="m-auto lg:w-3/5 text-center lg:mb-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          {sectionData.subtitle || "Featured Products"}
+          {sectionData.subTitle || "Featured Products"}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
           {sectionData.title || "We have the best equipment"}{" "}
@@ -44,8 +49,8 @@ const WeBestSection = ({ sectionData }: { sectionData: ISection }) => {
         </p>
       </div>
       <div className="">
-        {sectionData.subContents &&
-          sectionData.subContents?.map((data: SubContent, index: number) => (
+        {sectionData?.contents &&
+          sectionData.contents?.map((data: SectionContent, index: number) => (
             <div
               key={index}
               className="container mx-auto p-0 sm:p-6 lg:p-12 xl:p-20 2xl:p-32 py-12 flex flex-col lg:flex-row items-center justify-between"
@@ -53,7 +58,15 @@ const WeBestSection = ({ sectionData }: { sectionData: ISection }) => {
               {/* Left Column - Image */}
               <div className="lg:w-2/4 h-80  w-full flex justify-center">
                 <Image
-                  src={"/images/pro1.png"} // Ensure this image exists in the public folder
+                  src={
+                    data?.image
+                      ? `${
+                          process.env.NEXT_PUBLIC_API_URL
+                        }${data.image
+                          .replace(/\\/g, "/")
+                          .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                      : "/images/droneArmy.png" // Fallback image if no cover image
+                  }
                   alt="Explore Image"
                   width={800}
                   height={630}
@@ -70,13 +83,13 @@ const WeBestSection = ({ sectionData }: { sectionData: ISection }) => {
                   {index + 1}
                 </h2>
                 <h2 className="text-lg sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-50 leading-7">
-                  {data?.title}
+                  {data?.title || ""}
                 </h2>
                 <p className="text-sm sm:text-lg md:text-xl lg:text-[16px] xl:text-[16px] line-clamp-4 md:line-clamp-none text-gray-100 mt-4 leading-8">
-                  {data?.description}
+                  {data?.description || ""}
                 </p>
                 <Link
-                  href={"/contact-us"}
+                  href={data?.link || "/contact-us"}
                   className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center"
                 >
                   View Products{" "}

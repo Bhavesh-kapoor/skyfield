@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import HeaderSection from "../common/HeaderSection";
 import ContactDetails from "./ContactDetails";
@@ -17,7 +17,9 @@ export default function ContactUsForm({ details }: { details?: boolean }) {
   const [success, setSuccess] = useState("");
 
   // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -29,7 +31,7 @@ export default function ContactUsForm({ details }: { details?: boolean }) {
     setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch("http://localhost:5000/api/contact-us", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,11 +40,18 @@ export default function ContactUsForm({ details }: { details?: boolean }) {
       });
 
       const result = await response.json();
-      if (!response.ok) throw new Error(result.message || "Something went wrong");
+      if (!response.ok)
+        throw new Error(result.message || "Something went wrong");
 
       setSuccess("Your message has been sent successfully!");
-      setFormData({ firstName: "", lastName: "", email: "", phone: "", description: "" }); // Reset form
-    } catch (err:any) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        description: "",
+      }); // Reset form
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
@@ -68,7 +77,10 @@ export default function ContactUsForm({ details }: { details?: boolean }) {
           {success && <p className="text-green-600">{success}</p>}
           {error && <p className="text-red-600">{error}</p>}
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 md:gap-6"
+          >
             <input
               type="text"
               name="firstName"
@@ -94,7 +106,7 @@ export default function ContactUsForm({ details }: { details?: boolean }) {
               onChange={handleChange}
               className="border col-span-2 md:col-span-1 border-gray-900 p-3 bg-transparent px-8 w-full mb-2"
               placeholder="Email"
-              required
+              required  
             />
             <input
               type="text"

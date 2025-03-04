@@ -6,10 +6,11 @@ const HeroSection = ({
   title,
   description,
   video,
+  link,
 }: {
   title: string;
   description: string;
-  link?: string;
+  link?: any;
   video: string;
 }) => {
   return (
@@ -22,7 +23,7 @@ const HeroSection = ({
         muted
         playsInline
       >
-        <source src={video} type="video/mp4" />
+        <source src={video || "/videos/heroSection.mp4"} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -31,13 +32,15 @@ const HeroSection = ({
 
       {/* Centered Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center lg:justify-end 2xl:justify-center text-center text-white px-6 lg:w-3/5 m-auto p-4 mb-10">
-        <h1 className="text-2xl md:text-4xl lg:4xl xl:5xl font-bold">{title}</h1>
+        <h1 className="text-2xl md:text-4xl lg:4xl xl:5xl font-bold">
+          {title || ""}
+        </h1>
         <p className="text-sm line-clamp-4 md:line-clamp-none md:text-sm 2xl:text-fxl mt-4 max-w-2xl left-6 mb-10">
-          {description}
+          {description || ""}
         </p>
         <div className="flex justify-between items-center">
           <Link
-            href={"/about-us"}
+            href={link || ""}
             className="border border-gray-50 px-5 py-2 text-gray-50 flex justify-between items-center"
           >
             Learn More{" "}

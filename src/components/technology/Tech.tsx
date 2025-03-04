@@ -2,12 +2,12 @@ import React from "react";
 import HeaderSection from "../common/HeaderSection";
 import Image from "next/image";
 import InfoCard from "./InfoCard";
-import { ISection } from "@/utils/server";
+import { ISection, SectionResponse } from "@/utils/server";
 
 export default function Tech({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) {
   const datas = [
     {
@@ -35,7 +35,7 @@ export default function Tech({
     <div className="max-w-7xl p-4 m-auto">
       <HeaderSection
         title={sectionData?.title || "Revolutionizing Aerial Operations"}
-        subTitle={sectionData?.subtitle || " Advanced Drone System"}
+        subTitle={sectionData?.subTitle || " Advanced Drone System"}
         description={
           sectionData?.description ||
           "The Skyfield Advanced Drone System combines mother-drone technology with specialized indoor drones for unprecedented operational flexibility:"
@@ -44,10 +44,16 @@ export default function Tech({
 
       <div className="w-full lg:p-16 mx-auto">
         <Image
-          src="/images/techDrone.png"
+          src={
+            sectionData?.coverImage
+              ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.coverImage
+                  .replace(/\\/g, "/")
+                  .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+              : "/images/droneArmy.png" // Fallback image if no cover image
+          }
           width={1200}
           height={300}
-          alt="Image 1"
+          alt={sectionData?.title || "Image 1"}
           className="object-cover h-[90vh] 2xl:h-[30vh] "
         />
       </div>

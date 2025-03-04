@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import NewsLatter from "./NewsLatter";
 
 export default function Footer() {
   const navLinks = [
@@ -116,22 +117,25 @@ export default function Footer() {
             </div>
 
             {/* Subscription Section */}
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <h2 className="mb-2 text-lg font-semibold">
                 Subscribe to Our Newsletter!
               </h2>
-              <input
-                type="email"
-                className="border p-2 bg-transparent rounded px-4 w-full mb-2"
-                placeholder="Enter Your Email Address"
-              />
-              <button
-                type="button"
-                className="w-full text-center text-gray-700 bg-[#FFA7A7] p-2 rounded hover:bg-[#ff8c8c] transition"
-              >
-                Subscribe Now
-              </button>
-            </div>
+              <form method="post" action="">
+                <input
+                  type="email"
+                  className="border p-2 bg-transparent rounded px-4 w-full mb-2"
+                  placeholder="Enter Your Email Address"
+                />
+                <button
+                  type="button"
+                  className="w-full text-center text-gray-700 bg-[#FFA7A7] p-2 rounded hover:bg-[#ff8c8c] transition"
+                >
+                  Subscribe Now
+                </button>
+              </form>
+            </div> */}
+            <NewsLatter />
           </div>
         </div>
       </div>

@@ -3,12 +3,12 @@ import React from "react";
 import HeaderSection from "../common/HeaderSection";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ISection } from "@/utils/server";
+import { ISection, SectionResponse } from "@/utils/server";
 
 export default function Advantages({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) {
   const features = [
     {
@@ -42,8 +42,9 @@ export default function Advantages({
     <div className="max-w-7xl p-4 m-auto hidden lg:block">
       <HeaderSection
         title={sectionData?.title || "Advanced Mother Drone"}
-        subTitle={sectionData?.subtitle || "Key Advantages"}
+        subTitle={sectionData?.subTitle || "Key Advantages"}
         description={
+          sectionData?.description ||
           "Breakthrough Innovation in Integrated Drone Systems Skyfield presents the next generation of operational drone systems. Our advanced system combines an innovative mother drone serving as a launch and communication station, with specialized Indoor drones for missions inside buildings and complex environments. Skyfield, a leader in advanced drone solutions, brings cutting-edge technology to the modern battlefield."
         }
       />
@@ -59,8 +60,16 @@ export default function Advantages({
             >
               <div className="w-72 md:w-96 lg:w-[450px] aspect-square rounded-full overflow-hidden">
                 <Image
-                  src="/images/drone.png"
-                  alt="Drone"
+                  src={
+                    sectionData?.coverImage
+                      ? `${
+                          process.env.NEXT_PUBLIC_API_URL
+                        }${sectionData.coverImage
+                          .replace(/\\/g, "/")
+                          .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                      : "/images/droneArmy.png" // Fallback image if no cover image
+                  }
+                  alt={sectionData?.title || "Drone"}
                   width={450}
                   height={450}
                   className="object-cover w-full h-full"

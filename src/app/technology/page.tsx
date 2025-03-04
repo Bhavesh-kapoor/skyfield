@@ -7,15 +7,17 @@ import { getTechnologyData } from "@/utils/server";
 import React from "react";
 
 const page = async () => {
+  const { loading, technologyPageData }: any = await getTechnologyData();
   const {
-    loading,
     title,
+    subTitle,
     description,
-    section1,
-    section2,
-    section3,
-    section4,
-  } = await getTechnologyData();
+    coverImage,
+    videoUrl,
+    slug,
+    link,
+    contents,
+  } = technologyPageData[0];
   if (!loading) return null;
   const data = {
     title: "Skyfield Advanced Defense Technologies",
@@ -29,13 +31,13 @@ const page = async () => {
       <HeroSection
         title={title || data.title}
         description={description || data.description}
-        link={data.link}
-        video={data.video}
+        link={link || data.link}
+        video={videoUrl || data.video}
       />
-      <Tech sectionData={section1} />
-      <CommandCenter sectionData={section2} />
-      <Next sectionData={section3} />
-      <Advancing sectionData={section4} />
+    {technologyPageData && technologyPageData?.length > 1 && <Tech sectionData={technologyPageData[1]} />}
+    {technologyPageData && technologyPageData?.length > 2 && <CommandCenter sectionData={technologyPageData[2]} />}
+    {technologyPageData && technologyPageData?.length > 3 && <Next sectionData={technologyPageData[3]} />}
+    {technologyPageData && technologyPageData?.length > 4 && <Advancing sectionData={technologyPageData[4]} />}
     </div>
   );
 };

@@ -1,9 +1,15 @@
-import { ISection, SubContent } from "@/utils/server";
+import {
+  Content,
+  ISection,
+  SectionContent,
+  SectionResponse,
+  SubContent,
+} from "@/utils/server";
 import Link from "next/link";
 import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 
-const Service = ({ sectionData }: { sectionData: ISection }) => {
+const Service = ({ sectionData }: { sectionData: SectionResponse }) => {
   if (!sectionData) return null;
   // const datas = [
   //   {
@@ -31,7 +37,7 @@ const Service = ({ sectionData }: { sectionData: ISection }) => {
     <div className="max-w-7xl lg:max-w-6xl m-auto p-4">
       <div className="m-auto lg:w-3/5 text-center mb-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          What We Are
+          {sectionData?.subTitle || "What We Are"}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
           {sectionData?.title || "Service That We Offer"}
@@ -42,17 +48,21 @@ const Service = ({ sectionData }: { sectionData: ISection }) => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {sectionData?.subContents &&
-          sectionData.subContents.map((data: SubContent, index: number) => (
+        {sectionData?.contents &&
+          sectionData.contents.map((data: SectionContent, index: number) => (
             <div
               className="border text-left col-span-1 text-gray-50 p-8 h-64 flex flex-col justify-end items-start"
               key={index}
             >
-              <h2 className="text-sm font-semibold mb-2">{data?.title}</h2>
-              <p className="text-sm md:text-xs mb-6">{data?.description}</p>
+              <h2 className="text-sm font-semibold mb-2">
+                {data?.title || ""}
+              </h2>
+              <p className="text-sm md:text-xs mb-6">
+                {data?.description || ""}
+              </p>
               <div className="w-full flex justify-end items-center">
                 <Link
-                  href={"/about-us"}
+                  href={data?.link || "/about-us"}
                   className="bg-gray-50 text-gray-800 rounded-full text-2xl p-1.5 w-10 h-10"
                 >
                   <GoArrowUpRight width={30} height={30} />

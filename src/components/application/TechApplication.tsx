@@ -2,12 +2,17 @@ import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
 import HeaderSection from "../common/HeaderSection";
 import Image from "next/image";
-import { ISection, SubContent } from "@/utils/server";
+import {
+  ISection,
+  SectionContent,
+  SectionResponse,
+  SubContent,
+} from "@/utils/server";
 
 const TechApplication = async ({
   sectionData,
 }: {
-  sectionData: ISection | undefined;
+  sectionData: SectionResponse | undefined;
 }) => {
   // const datas = [
   //   {
@@ -33,7 +38,7 @@ const TechApplication = async ({
     <div className="max-w-7xl p-4 m-auto">
       <HeaderSection
         title={sectionData?.title || "Advancing Applications with Technology"}
-        subTitle={sectionData?.subtitle || " Advanced Drone System"}
+        subTitle={sectionData?.subTitle || " Advanced Drone System"}
         description={
           sectionData?.description ||
           "The Skyfield Advanced Drone System combines mother-drone technology with specialized indoor drones for unprecedented operational flexibility:"
@@ -42,8 +47,8 @@ const TechApplication = async ({
 
       <div className="w-full lg:p-16 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {sectionData?.subContents &&
-            sectionData?.subContents?.map((data: SubContent, index: any) => (
+          {sectionData?.contents &&
+            sectionData?.contents?.map((data: SectionContent, index: any) => (
               <div
                 key={index}
                 className="container mx-auto flex flex-col lg:flex-col items-center justify-between"
@@ -52,8 +57,16 @@ const TechApplication = async ({
 
                 <div className=" h-96  w-full flex justify-center">
                   <Image
-                    src={"/images/pro1.png"} // Ensure this image exists in the public folder
-                    alt="Explore Image"
+                    src={
+                      sectionData?.coverImage
+                        ? `${
+                            process.env.NEXT_PUBLIC_API_URL
+                          }${sectionData.coverImage
+                            .replace(/\\/g, "/")
+                            .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                        : "/images/droneArmy.png" // Fallback image if no cover image
+                    }
+                    alt={data?.title || "Explore Image"}
                     width={800}
                     height={630}
                     className="rounded-none shadow-lg w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl object-cover"
@@ -63,15 +76,15 @@ const TechApplication = async ({
                 {/* Right Column - Content */}
                 <div className={` w-full mt-8 lg:mt-4 lg:text-center  `}>
                   <h2 className="text-lg sm:text-xl md:text-xl lg:text-xl xl:text-xl  font-bold text-center text-gray-50 leading-7 mb-3">
-                    {data?.title}
+                    {data?.title || "The TactiTech Command Center"}
                   </h2>
 
                   <p className="mt-2 text-sm text-center text-gray-300">
-                    {data?.description}
+                    {data?.description || ""}
                   </p>
 
                   <Link
-                    href={"/contact-us"}
+                    href={data?.link || "/contact-us"}
                     className="mt-6 m-auto px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center"
                   >
                     View products{" "}

@@ -1,14 +1,19 @@
-import { ISection, SubContent } from "@/utils/server";
+import {
+  ISection,
+  SectionContent,
+  SectionResponse,
+  SubContent,
+} from "@/utils/server";
 import Image from "next/image";
 
-const Why = ({ sectionData }: { sectionData: ISection }) => {
+const Why = ({ sectionData }: { sectionData: SectionResponse }) => {
   if (!sectionData) return null;
 
-  const clients = sectionData.subContents || [
-    { id: 1, name: "Innovation", logo: "/images/bulb.png" },
-    { id: 2, name: "Quality", logo: "/images/high-qualty.png" },
-    { id: 3, name: "Customer Focus", logo: "/images/consumer-centric.png" },
-    { id: 4, name: "Global Support", logo: "/images/global-online.png" },
+  const clients: SectionContent[] = sectionData?.contents || [
+    { title: "Innovation", image: "/images/bulb.png" },
+    { title: "Quality", image: "/images/high-qualty.png" },
+    { title: "Customer Focus", image: "/images/consumer-centric.png" },
+    { title: "Global Support", image: "/images/global-online.png" },
   ];
 
   const bgShades = [
@@ -30,7 +35,7 @@ const Why = ({ sectionData }: { sectionData: ISection }) => {
       {/* Content */}
       <div className="relative z-10 text-center lg:w-3/5 mx-auto lg:mb-16 lg:p-16">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          {sectionData.subtitle || "Our Commitments"}
+          {sectionData.subTitle || "Our Commitments"}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
           {sectionData.title || "Why SkyField"}
@@ -44,25 +49,26 @@ const Why = ({ sectionData }: { sectionData: ISection }) => {
       {/* Clients Grid */}
       <div className="relative z-10 py-8">
         <div className="max-w-screen-xl mx-auto w-4/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {clients.map((client: SubContent, index: number) => (
-            <div
-              key={index}
-              className={`flex flex-col justify-center items-center h-64 rounded-lg shadow-lg p-6 ${
-                bgShades[8 - index]
-              }`}
-            >
-              <Image
-                src={"/images/bulb.png"}
-                width={5000}
-                height={5000}
-                alt={`Client ${index + 1}`}
-                className="w-28 h-28 object-contain p-2"
-              />
-              <p className="mt-2 text-lg font-semibold text-center text-gray-50">
-                {client.title}
-              </p>
-            </div>
-          ))}
+          {clients &&
+            clients.map((client: SectionContent, index: number) => (
+              <div
+                key={index}
+                className={`flex flex-col justify-center items-center h-64 rounded-lg shadow-lg p-6 ${
+                  bgShades[8 - index]
+                }`}
+              >
+                <Image
+                  src={client?.image || "/images/bulb.png"}
+                  width={5000}
+                  height={5000}
+                  alt={client?.title || "Client Logo"}
+                  className="w-28 h-28 object-contain p-2"
+                />
+                <p className="mt-2 text-lg font-semibold text-center text-gray-50">
+                  {client.title || "Client Name"}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     </section>

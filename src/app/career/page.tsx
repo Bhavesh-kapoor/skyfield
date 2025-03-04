@@ -5,8 +5,17 @@ import WhyJoin from "@/components/careers/WhyJoin";
 import { getCareerData } from "@/utils/server";
 
 const page = async () => {
-  const { loading, title, description, section1, section2, section3 } =
-    await getCareerData();
+  const { loading, careerPageData }: any = await getCareerData();
+  const {
+    title,
+    subTitle,
+    description,
+    coverImage,
+    videoUrl,
+    slug,
+    link,
+    contents,
+  } = careerPageData[0];
   if (!loading) return null;
   const data = {
     title: "Working at SkyField",
@@ -20,17 +29,22 @@ const page = async () => {
       <HeroSection
         title={title || data?.title}
         description={description || data?.description}
-        link={data?.link}
-        video={data?.video}
+        link={link || "/contact-us"}
+        video={videoUrl}
       />
       <div className="bg-gray-50">
-        <OpenPosition sectionData={section1} />
-        <WhyJoin sectionData={section2} section2Data={section3} />
+        {careerPageData && careerPageData?.length > 1 && (
+          <OpenPosition sectionData={careerPageData[1]} />
+        )}
+        {careerPageData && careerPageData?.length > 3 && (
+          <WhyJoin
+            sectionData={careerPageData[2]}
+            section2Data={careerPageData[3]}
+          />
+        )}
       </div>
     </div>
   );
 };
-
-
 
 export default page;
