@@ -57,7 +57,7 @@ const Navbar = () => {
         <MobileMenu />
 
         <Link
-          href={"/contact-us-us"}
+          href={"/contact-us"}
           className="border hidden lg:block border-gray-50 px-5 py-2 text-gray-50"
         >
           Contact Us
