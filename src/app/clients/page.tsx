@@ -19,7 +19,7 @@ export default function page() {
         title={data?.title}
         description={data?.description}
         link={data?.link}
-        video={data?.video}
+        video={''}
       />
       <div className="bg-gray-50">
         <OurClients />

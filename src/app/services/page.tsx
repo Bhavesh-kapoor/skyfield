@@ -34,7 +34,7 @@ const page = async () => {
         title={title || data?.title}
         description={description || data?.description}
         link={link || "/contact-us"}
-        video={videoUrl || "/videos/heroSection.mp4"}
+        video={videoUrl}
       />
       {servicePageData && servicePageData?.length > 1 && (
         <SkillFields sectionData={servicePageData[1]} />

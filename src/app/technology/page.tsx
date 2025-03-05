@@ -32,7 +32,7 @@ const page = async () => {
         title={title || data.title}
         description={description || data.description}
         link={link || data.link}
-        video={videoUrl || data.video}
+        video={videoUrl}
       />
     {technologyPageData && technologyPageData?.length > 1 && <Tech sectionData={technologyPageData[1]} />}
     {technologyPageData && technologyPageData?.length > 2 && <CommandCenter sectionData={technologyPageData[2]} />}

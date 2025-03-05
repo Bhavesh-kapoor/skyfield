@@ -17,13 +17,13 @@ const HeroSection = ({
     <div className="relative w-full h-[80vh] md:h-screen 2xl:h-[70vh] overflow-hidden">
       {/* Background Video */}
       <video
-        className="absolute top-0 left-0 w-full wh-[80vh] md:h-screen 2xl:h-[70vh] object-cover"
+        className="absolute top-0 left-0 w-full h-[80vh] md:h-screen 2xl:h-[70vh] object-cover"
         autoPlay
         loop
         muted
         playsInline
       >
-        <source src={`${process.env.NEXT_PUBLIC_API_URL}${video}` || "/videos/heroSection.mp4"} type="video/mp4" />
+        <source src={video?`${process.env.NEXT_PUBLIC_API_URL}${video}` : "/videos/heroSection.mp4"} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

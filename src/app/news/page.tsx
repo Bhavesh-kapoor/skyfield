@@ -41,7 +41,7 @@ export default function page() {
         title={data.title}
         description={data.description}
         link={data.link}
-        video={data.video}
+        video={""}
       />
       <div className="max-w-7xl lg:max-w-6xl m-auto p-4 lg:py-24">
         {/* News Header */}
@@ -77,7 +77,7 @@ export default function page() {
         </div>
 
         {/* Comments Section */}
-        <div className="mt-12">
+        {/* <div className="mt-12">
           <h3 className="text-2xl font-semibold text-gray-800">Comments</h3>
           <div className="mt-4">
             <div className="bg-gray-100 p-4 rounded-lg mb-4">
@@ -93,7 +93,7 @@ export default function page() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Latest Blogs Section */}
         <div className="mt-12">
@@ -108,13 +108,7 @@ export default function page() {
                   {/* Left Column - Image */}
                   <div className=" h-80  w-full flex justify-center">
                     <Image
-                         src={
-                          data?.image
-                            ? `${process.env.NEXT_PUBLIC_API_URL}${data.image
-                                .replace(/\\/g, "/")
-                                .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
-                            : "/images/droneArmy.png" // Fallback image if no cover image
-                        }// Ensure this image exists in the public folder
+                      src={data?.image} // Ensure this image exists in the public folder
                       alt="Explore Image"
                       width={800}
                       height={630}

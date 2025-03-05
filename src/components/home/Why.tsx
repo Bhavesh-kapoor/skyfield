@@ -9,7 +9,7 @@ import Image from "next/image";
 const Why = ({ sectionData }: { sectionData: SectionResponse }) => {
   if (!sectionData) return null;
 
-  const clients: SectionContent[] = sectionData?.contents || [
+  const clients: any = [
     { title: "Innovation", image: "/images/bulb.png" },
     { title: "Quality", image: "/images/high-qualty.png" },
     { title: "Customer Focus", image: "/images/consumer-centric.png" },
@@ -58,7 +58,7 @@ const Why = ({ sectionData }: { sectionData: SectionResponse }) => {
                 }`}
               >
                 <Image
-                  src={client?.image || "/images/bulb.png"}
+                  src={ client.image || "/images/bulb.png"}
                   width={5000}
                   height={5000}
                   alt={client?.title || "Client Logo"}

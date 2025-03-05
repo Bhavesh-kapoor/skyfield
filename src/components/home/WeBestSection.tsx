@@ -10,6 +10,7 @@ import React from "react";
 import { GoArrowUpRight } from "react-icons/go";
 
 const WeBestSection = ({ sectionData }: { sectionData: SectionResponse }) => {
+  // console.log(sectionData)
   if (!sectionData) return null;
   // const datas = [
   //   {
@@ -33,7 +34,7 @@ const WeBestSection = ({ sectionData }: { sectionData: SectionResponse }) => {
   // ];
   return (
     <div className="max-w-7xl relative lg:max-w-6xl  m-auto p-4">
-      <div className="absolute top-44 right-0 inset-0 flex justify-center items-center">
+      <div className="absolute top-44 right-0 inset-0 flex justify-center items-center -z-50">
         <div className="w-2/5  h-screen bg-gradient-to-r from-[#737373] via-10% via-[#737373] to-[#ffa7a7] opacity-30 rounded-full blur-3xl -z-40"></div>
       </div>
       <div className="m-auto lg:w-3/5 text-center lg:mb-16">
@@ -53,16 +54,13 @@ const WeBestSection = ({ sectionData }: { sectionData: SectionResponse }) => {
           sectionData.contents?.map((data: SectionContent, index: number) => (
             <div
               key={index}
-              className="container mx-auto p-0 sm:p-6 lg:p-12 xl:p-20 2xl:p-32 py-12 flex flex-col lg:flex-row items-center justify-between"
+              className="container mx-auto p-0 sm:p-6 lg:px-12 xl:px-20 2xl:px-32 py-12 flex flex-col lg:flex-row items-center justify-between"
             >
-              {/* Left Column - Image */}
               <div className="lg:w-2/4 h-80  w-full flex justify-center">
                 <Image
                   src={
                     data?.image
-                      ? `${
-                          process.env.NEXT_PUBLIC_API_URL
-                        }${data.image
+                      ? `${process.env.NEXT_PUBLIC_API_URL}/${data.image
                           .replace(/\\/g, "/")
                           .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
                       : "/images/droneArmy.png" // Fallback image if no cover image
@@ -74,7 +72,6 @@ const WeBestSection = ({ sectionData }: { sectionData: SectionResponse }) => {
                 />
               </div>
 
-              {/* Right Column - Content */}
               <div
                 className={`lg:w-1/2 w-full mt-8 lg:mt-0 lg:pl-12 lg:text-left  `}
               >

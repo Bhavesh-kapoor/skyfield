@@ -33,7 +33,7 @@ const page = async () => {
       <HeroSection
         title={title || data?.title}
         description={description || data?.description}
-        video={data?.video}
+        video={videoUrl}
         link={link || "/contact-us"}
       />
       <div className="bg-[#b0b0b08c]">

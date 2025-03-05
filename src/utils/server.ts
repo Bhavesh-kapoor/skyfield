@@ -287,10 +287,23 @@ export const getBlogSlugData = async (slug: any) => {
 export const getNewsListData = async () => {
   const newsListPage: any[] = await getData("/api/news");
   if (newsListPage.length === 0) return { loading: false };
-
+console.log(newsListPage)
   const loadingListData = newsListPage.length === 0 ? false : true;
   return {
     loadingListData,
     newsListPage,
+  };
+};
+
+
+
+export const getNewsSlugData = async (slug: any) => {
+  const newsPageSlugData: any[] = await getData(`/api/news?slug=${slug}`);
+  if (newsPageSlugData.length === 0) return { loading: false };
+
+  const loading = newsPageSlugData.length === 0 ? false : true;
+  return {
+    loading,
+    newsPageSlugData,
   };
 };

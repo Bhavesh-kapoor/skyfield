@@ -1,7 +1,7 @@
 "use client";
 
 import HeroSection from "@/components/home/HeroSection";
-import { getBlogData, getBlogSlugData, SectionData } from "@/utils/server";
+import { getBlogData, getBlogSlugData, getNewsSlugData, SectionData } from "@/utils/server";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
@@ -29,13 +29,13 @@ const page = () => {
 
   useEffect(() => {
     if (!slug) return;
-
+console.log(slug)
     const fetchBlog = async () => {
       try {
         setLoadingBlogList(true);
-        const { blogPageSlugData } = await getBlogSlugData(slug);
+        const { newsPageSlugData } = await getNewsSlugData(slug);
         // console.log(blogPageSlugData);
-        setBlog(blogPageSlugData?.[0]);
+        setBlog(newsPageSlugData?.[0]);
       } catch (error) {
         console.error("Error fetching blog:", error);
       } finally {

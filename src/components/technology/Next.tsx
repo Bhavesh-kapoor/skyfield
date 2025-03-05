@@ -39,7 +39,7 @@ export default function Next({
       ],
     },
   ];
-  console.log(sectionData)
+  // console.log(sectionData)
   return (
     <div className="max-w-7xl p-4 m-auto">
       <HeaderSection

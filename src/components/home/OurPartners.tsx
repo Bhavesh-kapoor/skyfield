@@ -8,13 +8,13 @@ import { Content, ISection, SectionResponse } from "@/utils/server";
 
 const OurPartners = ({ sectionData }: { sectionData: SectionResponse }) => {
   if (!sectionData) return null;
-  // let clients = [
-  //   { id: 1, name: "Android", coverImage:"", logo: "/images/client1.png" },
-  //   { id: 2, name: "Kotlin", coverImage:"",logo: "/images/client2.png" },
-  //   { id: 3, name: "FireStore", coverImage:"",logo: "/images/client3.png" },
-  //   { id: 4, name: "Java", coverImage:"", logo: "/images/client4.png" },
-  // ];
-  const clients = sectionData?.contents;
+  let clients = [
+    { id: 1, title: "Android", coverImage: "", image: "/images/client1.png" },
+    { id: 2, title: "Kotlin", coverImage: "", image: "/images/client2.png" },
+    { id: 3, title: "FireStore", coverImage: "", image: "/images/client3.png" },
+    { id: 4, title: "Java", coverImage: "", image: "/images/client4.png" },
+  ];
+  // const clients = sectionData?.contents;
   return (
     <section className="py-12 relative max-w-7xl m-auto p-4 lg:p-0">
       <div className="absolute top-32 inset-0 flex justify-center items-center">
@@ -33,7 +33,7 @@ const OurPartners = ({ sectionData }: { sectionData: SectionResponse }) => {
         </p>
       </div>
 
-      <div className="relative overflow-hidden lg:wpy-8">
+      <div className="relative overflow-hidden lg:py-8">
         <div className="relative flex overflow-hidden max-w-screen-xl mx-auto w-4/5">
           <motion.div
             className="flex space-x-6"
@@ -47,19 +47,13 @@ const OurPartners = ({ sectionData }: { sectionData: SectionResponse }) => {
           >
             {clients &&
               [...clients, ...clients, ...clients].map((client, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-36 h-32w rounded-lg"
-                >
+                <div key={index} className="flex-shrink-0 w-36 h-32 rounded-lg">
+                 
                   <Image
                     src={
-                      client?.image
-                        ? `${
-                            process.env.NEXT_PUBLIC_API_URL
-                          }${client.image
-                            .replace(/\\/g, "/")
-                            .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
-                        : "/images/droneArmy.png" // Fallback image if no cover image
+                      client.image
+                        // ? `/api/image?url=${client.image}`
+                        // : "/images/client1.png"
                     }
                     width={300}
                     height={100}

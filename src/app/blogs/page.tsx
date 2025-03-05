@@ -29,7 +29,7 @@ const page = async () => {
         title={title||data?.title}
         description={description||data?.description}
         link={link||data?.link}
-        video={videoUrl||data?.video}
+        video={videoUrl}
       />
       <div className="bg-gray-50">
         <Blogs />

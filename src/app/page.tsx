@@ -32,12 +32,13 @@ const Home = async () => {
     link: "/",
   };
 
+
   return (
     <div className={lexendDeca.className}>
       <HeroSection
         title={title || data?.title}
         description={description || data?.description}
-        video={videoUrl || data?.video}
+        video={videoUrl}
         link={link || "/contact-us"}
       />
       {homePageData && homePageData?.length > 1 && (

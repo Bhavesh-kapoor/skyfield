@@ -30,7 +30,7 @@ const LatestNews = ({ sectionData }: { sectionData: SectionResponse }) => {
 
     fetchBlogs();
   }, []); // ✅ Runs only once
-
+  console.log(newsData)
   if (!sectionData) return null;
   // const datas = sectionData.subContents || [
   //   {
@@ -57,7 +57,7 @@ const LatestNews = ({ sectionData }: { sectionData: SectionResponse }) => {
   // ];
   return (
     <div className="max-w-7xl lg:max-w-6xl relative m-auto p-4">
-      <div className="absolute top-44 left-[-50rem] inset-0 flex justify-center items-center">
+      <div className="absolute top-44 left-[-50rem] inset-0 flex justify-center items-center -z-50">
         <div className="w-2/5  h-screen bg-gradient-to-r from-[#737373] via-10% via-[#737373] to-[#ffa7a7] opacity-30 rounded-full blur-3xl -z-40"></div>
       </div>
       <div className="m-auto lg:w-3/5 text-center mb-4 lg:mb-16">
@@ -74,7 +74,7 @@ const LatestNews = ({ sectionData }: { sectionData: SectionResponse }) => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {newsData &&
-          newsData.map((data: SectionContent, index: number) => {
+          newsData.map((data: any, index: number) => {
             // Construct image URL
             const imageUrl = data?.image
               ? `${process.env.NEXT_PUBLIC_API_URL}${data.image.replace(
@@ -109,7 +109,7 @@ const LatestNews = ({ sectionData }: { sectionData: SectionResponse }) => {
                   </h2>
                   <p className="text-gray-50 text-xs mb-4">{"13/12/2025"}</p>
                   <Link
-                    href={data?.link || "/news"}
+                    href={`/news/${data?.slug}`}
                     className="mt-6 px-6 py-3 sm:px-8 sm:py-2 text-sm sm:text-base md:text-lg bg-transparent text-white rounded-none shadow-md border transition flex justify-center items-center"
                   >
                     Read More

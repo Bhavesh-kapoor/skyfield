@@ -33,7 +33,7 @@ const page = async () => {
         title={title || data?.title}
         description={description || data?.description}
         link={link || data?.description}
-        video={videoUrl || "/videos/heroSection.mp4"}
+        video={videoUrl}
       />
      <div className="bg-gray-50">
         {applicationPageData && applicationPageData?.length > 1 && <ProductSection sectionData={applicationPageData[1]} />}

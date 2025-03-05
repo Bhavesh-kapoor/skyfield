@@ -15,7 +15,7 @@ export default function page() {
         title={data.title}
         description={data.description}
         link={data.link}
-        video={data.video}
+        video={''}
       />
 
       <div className="max-w-7xl lg:max-w-6xl m-auto p-4 lg:py-24">

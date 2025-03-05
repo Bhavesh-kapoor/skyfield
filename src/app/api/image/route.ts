@@ -12,7 +12,8 @@ export async function GET(req: Request) {
 
   try {
     // Try to fetch the external image
-    const response: unknown | any = await axios.get(url, {
+    const BASEURL = process.env.NEXT_PUBLIC_API_URL;
+    const response: unknown | any = await axios.get(BASEURL + url, {
       responseType: "arraybuffer",
     });
 

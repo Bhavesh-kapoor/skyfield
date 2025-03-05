@@ -73,6 +73,8 @@ const Blogs = () => {
       date: "Jan 02 2025",
     },
   ];
+
+  console.log(blogs)
   return (
     <div className="max-w-7xl lg:max-w-6xl relative m-auto p-4">
       <div className="absolute top-44 left-[-50rem] inset-0 flex justify-center items-center -z-40">
