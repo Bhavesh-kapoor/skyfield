@@ -122,7 +122,6 @@ export const getHomeData = async () => {
     "/api/section?slug=home"
   );
 
-  console.log(homePageData);
   if (homePageData && homePageData?.length === 0) return { loading: false };
 
   const loading = homePageData?.length !== 0 ? true : false;
@@ -137,7 +136,6 @@ export const getAboutData = async () => {
     "/api/section?slug=about"
   );
 
-  console.log(aboutPageData);
   if (aboutPageData && aboutPageData?.length === 0) return { loading: false };
 
   const loading = aboutPageData?.length !== 0 ? true : false;
@@ -152,7 +150,6 @@ export const getServiceData = async () => {
     "/api/section?slug=service"
   );
 
-  console.log(servicePageData);
   if (servicePageData && servicePageData?.length === 0)
     return { loading: false };
 
@@ -168,7 +165,6 @@ export const getTechnologyData = async () => {
     "/api/section?slug=technology"
   );
 
-  console.log(technologyPageData);
   if (technologyPageData && technologyPageData?.length === 0)
     return { loading: false };
 
@@ -184,7 +180,7 @@ export const getCareerData = async () => {
     "/api/section?slug=career"
   );
   if (careerPageData.length === 0) return { loading: false };
-console.log(careerPageData)
+
   const {
     title,
     subTitle,
@@ -206,7 +202,7 @@ console.log(careerPageData)
     link,
     coverImage,
     contents,
-    careerPageData
+    careerPageData,
   };
 };
 export const getApplicationData = async () => {
@@ -214,7 +210,6 @@ export const getApplicationData = async () => {
     "/api/section?slug=application"
   );
 
-  console.log(applicationPageData);
   if (applicationPageData && applicationPageData?.length === 0)
     return { loading: false };
 
@@ -225,10 +220,41 @@ export const getApplicationData = async () => {
   };
 };
 
+export const getContactUsData = async () => {
+  const careerPageData: SectionResponse[] = await getData(
+    "/api/section?slug=contact"
+  );
+  if (careerPageData.length === 0) return { loading: false };
+
+  const {
+    title,
+    subTitle,
+    description,
+    videoUrl,
+    slug,
+    link,
+    coverImage,
+    contents,
+  } = careerPageData[0];
+  const loading = careerPageData?.length !== 0 ? true : false;
+  return {
+    loading,
+    title,
+    subTitle,
+    description,
+    videoUrl,
+    slug,
+    link,
+    coverImage,
+    contents,
+    careerPageData,
+  };
+};
+
 export const getBlogData = async () => {
   const blogPageData: any[] = await getData("/api/section?slug=blog");
   if (blogPageData.length === 0) return { loading: false };
-console.log(blogPageData)
+
   const loading = blogPageData.length === 0 ? false : true;
   return {
     loading,
@@ -239,7 +265,6 @@ console.log(blogPageData)
 export const getBlogsListData = async () => {
   const blogListPage: any[] = await getData("/api/blog");
   if (blogListPage.length === 0) return { loading: false };
-  console.log(blogListPage)
 
   const loadingListData = blogListPage.length === 0 ? false : true;
   return {
@@ -247,10 +272,6 @@ export const getBlogsListData = async () => {
     blogListPage,
   };
 };
-
-
-
-
 
 export const getBlogSlugData = async (slug: any) => {
   const blogPageSlugData: any[] = await getData(`/api/blog?slug=${slug}`);
@@ -263,13 +284,9 @@ export const getBlogSlugData = async (slug: any) => {
   };
 };
 
-
-
-
 export const getNewsListData = async () => {
   const newsListPage: any[] = await getData("/api/news");
   if (newsListPage.length === 0) return { loading: false };
-  console.log(newsListPage)
 
   const loadingListData = newsListPage.length === 0 ? false : true;
   return {

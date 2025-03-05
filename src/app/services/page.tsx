@@ -10,6 +10,7 @@ import React from "react";
 
 const page = async () => {
   const { loading, servicePageData }: any = await getServiceData();
+  if (!loading) return null;
   const {
     title,
     subTitle,
@@ -20,7 +21,6 @@ const page = async () => {
     link,
     contents,
   } = servicePageData[0];
-  if (!loading) return null;
   const data = {
     title: "Services",
     description:

@@ -1,9 +1,9 @@
-import { ISection } from "@/utils/server";
+import { ISection, SectionContent, SectionResponse } from "@/utils/server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const WhoWeAre = ({ sectionData }: { sectionData: ISection }) => {
+const WhoWeAre = ({ sectionData }: { sectionData: SectionResponse }) => {
   if (!sectionData) return null;
 
   return (
@@ -16,8 +16,8 @@ const WhoWeAre = ({ sectionData }: { sectionData: ISection }) => {
       <div className="lg:w-2/5 w-full flex justify-center">
         <Image
           src={
-            sectionData?.image1
-              ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.image1
+            sectionData?.coverImage
+              ? `${process.env.NEXT_PUBLIC_API_URL}/${sectionData?.coverImage
                   .replace(/\\/g, "/")
                   .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
               : "/images/droneArmy.png" // Fallback image if no cover image
@@ -28,11 +28,10 @@ const WhoWeAre = ({ sectionData }: { sectionData: ISection }) => {
           className="rounded-none shadow-lg w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl object-cover"
         />
       </div>
-
       {/* Right Column - Content */}
       <div className="lg:w-1/2 w-full mt-8 lg:mt-0 lg:pl-12 text-center lg:text-left">
         <h2 className="text-sm sm:text-3xl md:text-4xl lg:text-sm xl:text-sm font-normal tracking-widest text-gray-50 leading-7 mb-3">
-          {sectionData?.subtitle || "Who We Are"}
+          {sectionData?.subTitle || "Who We Are"}
         </h2>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-50 leading-7">
           {sectionData?.title || "We Take The Best Footage"}

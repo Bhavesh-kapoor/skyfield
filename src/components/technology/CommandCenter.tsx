@@ -50,11 +50,11 @@ const CommandCenter = ({ sectionData }: { sectionData: SectionResponse |undefine
                     item.position === "top-left"
                       ? "top-0 left-0"
                       : item.position === "top-right"
-                      ? "top-10 left-2"
+                      ? "top-[2.5rem] -translate-y-[-2.5rem] left-2"
                       : item.position === "left"
-                      ? "left-12 top-44 -translate-y-1/2"
+                      ? "left-16 top-44 -translate-x-[-1.8rem] -translate-y-1/2"
                       : item.position === "right"
-                      ? "left-6 top-28 -translate-y-1/2"
+                      ? "left-11 top-28 -translate-x-[-1rem] -translate-y-1/2"
                       : "top-36 left-1/3 -translate-x-1/3"
                   }`}
                 >
@@ -94,13 +94,13 @@ const CommandCenter = ({ sectionData }: { sectionData: SectionResponse |undefine
                     item.position === "top-left"
                       ? "top-0 right-0"
                       : item.position === "top-right"
-                      ? "top-10 right-2"
+                      ? "top-12 right-2"
                       : item.position === "left"
-                      ? "right-12 top-44 -translate-y-1/2"
+                      ? "right-7 top-44 -translate-y-1/2"
                       : item.position === "right"
-                      ? "right-6 top-28 -translate-y-1/2"
+                      ? "right-4 top-28  -translate-y-1/2"
                       : item.position === "bottom"
-                      ? "right-20 top-60 -translate-y-1/2"
+                      ? "right-12 top-60 -translate-y-1/2"
                       : "top-36 left-1/3 -translate-x-1/3"
                   }`}
                 >

@@ -5,7 +5,6 @@ import { getBlogData, getBlogsListData } from "@/utils/server";
 
 const page = async () => {
     const { loading, blogPageData }: any = await getBlogData();
-    console.log(blogPageData)
     const {
       title,
       subTitle,

@@ -11,6 +11,7 @@ import { getHomeData } from "@/utils/server";
 
 const Home = async () => {
   const { loading, homePageData }: any = await getHomeData();
+  if (!loading) return null;
   const {
     title,
     subTitle,
@@ -22,7 +23,7 @@ const Home = async () => {
     contents,
   } = homePageData[0];
 
-  if (!loading) return null;
+  
   const data = {
     title: "Your All In One Solution For Unmanned System Force",
     description:

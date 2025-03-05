@@ -23,7 +23,7 @@ const HeroSection = ({
         muted
         playsInline
       >
-        <source src={video || "/videos/heroSection.mp4"} type="video/mp4" />
+        <source src={`${process.env.NEXT_PUBLIC_API_URL}${video}` || "/videos/heroSection.mp4"} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

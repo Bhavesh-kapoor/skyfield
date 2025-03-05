@@ -75,7 +75,7 @@ const Blogs = () => {
   ];
   return (
     <div className="max-w-7xl lg:max-w-6xl relative m-auto p-4">
-      <div className="absolute top-44 left-[-50rem] inset-0 flex justify-center items-center">
+      <div className="absolute top-44 left-[-50rem] inset-0 flex justify-center items-center -z-40">
         <div className="w-2/5  h-screen bg-gradient-to-r from-[#737373] via-10% via-[#737373] to-[#ffa7a7] opacity-30 rounded-full blur-3xl -z-40"></div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-0">

@@ -9,6 +9,7 @@ import { getAboutData } from "@/utils/server";
 
 const page = async () => {
   const { loading, aboutPageData }: any = await getAboutData();
+  if (!loading) return null;
   const {
     title,
     subTitle,
@@ -19,7 +20,7 @@ const page = async () => {
     link,
     contents,
   } = aboutPageData[0];
-  if (!loading) return null;
+
   const data = {
     title: "About Us",
     description:

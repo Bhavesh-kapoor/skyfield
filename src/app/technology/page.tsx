@@ -8,6 +8,7 @@ import React from "react";
 
 const page = async () => {
   const { loading, technologyPageData }: any = await getTechnologyData();
+  if (!loading) return null;
   const {
     title,
     subTitle,
@@ -18,7 +19,6 @@ const page = async () => {
     link,
     contents,
   } = technologyPageData[0];
-  if (!loading) return null;
   const data = {
     title: "Skyfield Advanced Defense Technologies",
     description:

@@ -6,6 +6,7 @@ import { getCareerData } from "@/utils/server";
 
 const page = async () => {
   const { loading, careerPageData }: any = await getCareerData();
+  if (!loading) return null;
   const {
     title,
     subTitle,
@@ -16,7 +17,6 @@ const page = async () => {
     link,
     contents,
   } = careerPageData[0];
-  if (!loading) return null;
   const data = {
     title: "Working at SkyField",
     description:

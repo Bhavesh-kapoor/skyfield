@@ -11,28 +11,42 @@ import Blogs from "@/components/blogs/Blog";
 
 const page = () => {
   const { slug } = useParams(); // ✅ Get slug from dynamic route
-  const [loading, setLoading] = useState(true);
+  const [loadingBlogList, setLoadingBlogList] = useState(true);
+  const [loading, setLoading] = useState();
+  const [blogPageData, setBlogPageData] = useState<any>();
   const [blog, setBlog] = useState<any>(null);
+  useEffect(() => {
+    const fetchBlog = async () => {
+      const { loading, blogPageData }: any = await getBlogData();
+      console.log(blogPageData);
+      setBlogPageData(blogPageData[0]);
+      if (loading) {
+        setLoading(loading);
+      }
+    };
+    fetchBlog();
+  }, []);
 
   useEffect(() => {
     if (!slug) return;
 
     const fetchBlog = async () => {
       try {
-        setLoading(true);
+        setLoadingBlogList(true);
         const { blogPageSlugData } = await getBlogSlugData(slug);
+        console.log(blogPageSlugData);
         setBlog(blogPageSlugData?.[0]);
       } catch (error) {
         console.error("Error fetching blog:", error);
       } finally {
-        setLoading(false);
+        setLoadingBlogList(false);
       }
     };
 
     fetchBlog();
   }, [slug]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loadingBlogList) return <p>Loading...</p>;
   if (!blog) return <p>No blog found.</p>;
 
   const cleanHTML = DOMPurify.sanitize(blog?.content); // Sanitize HTML
@@ -46,16 +60,24 @@ const page = () => {
   };
   return (
     <div className="bg-gray-50">
-      <HeroSection
-        title={data.title}
-        description={data.description}
-        link={data.link}
-        video={data.video}
-      />
+      {blogPageData && (
+        <HeroSection
+          title={blogPageData?.title || data.title}
+          description={blogPageData?.description || data.description}
+          link={blogPageData?.link || data.link}
+          video={blogPageData?.videoUrl || data.video}
+        />
+      )}
       <div className="max-w-7xl lg:max-w-6xl m-auto p-4 lg:py-24">
         <div className="mb-16">
           <Image
-            src="/images/droneAlon.png"
+            src={
+              blog?.image
+                ? `${process.env.NEXT_PUBLIC_API_URL}/${blog?.image
+                    .replace(/\\/g, "/")
+                    .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
+                : "/images/droneArmy.png" // Fallback image if no cover image
+            }
             width={5000}
             height={3000}
             alt="Blog Banner"
@@ -83,15 +105,15 @@ const page = () => {
           ></p>
         </div>
 
-        <div className="mt-12">
+        {/* <div className="mt-12">
           <h3 className="text-2xl font-semibold text-gray-800">Comments</h3>
           <div className="mt-4">
-            <div className="bg-gray-100 p-4 rounded-lg mb-4">
+            {<div className="bg-gray-100 p-4 rounded-lg mb-4">
               <p className="font-semibold">User Name</p>
               <p className="text-gray-600">
                 This is a sample comment on the blog post.
               </p>
-            </div>
+            </div>}
             <div className="bg-gray-100 p-4 rounded-lg">
               <p className="font-semibold">Another User</p>
               <p className="text-gray-600">
@@ -99,7 +121,7 @@ const page = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-12">
           <h3 className="text-2xl font-semibold text-gray-800">Latest Blogs</h3>

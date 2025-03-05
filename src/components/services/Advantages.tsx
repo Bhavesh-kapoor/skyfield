@@ -64,7 +64,7 @@ export default function Advantages({
                     sectionData?.coverImage
                       ? `${
                           process.env.NEXT_PUBLIC_API_URL
-                        }${sectionData.coverImage
+                        }/${sectionData.coverImage
                           .replace(/\\/g, "/")
                           .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
                       : "/images/droneArmy.png" // Fallback image if no cover image

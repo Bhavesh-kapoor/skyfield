@@ -15,7 +15,6 @@ const OurPartners = ({ sectionData }: { sectionData: SectionResponse }) => {
   //   { id: 4, name: "Java", coverImage:"", logo: "/images/client4.png" },
   // ];
   const clients = sectionData?.contents;
-  console.log(clients);
   return (
     <section className="py-12 relative max-w-7xl m-auto p-4 lg:p-0">
       <div className="absolute top-32 inset-0 flex justify-center items-center">

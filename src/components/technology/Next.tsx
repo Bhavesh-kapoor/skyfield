@@ -39,6 +39,7 @@ export default function Next({
       ],
     },
   ];
+  console.log(sectionData)
   return (
     <div className="max-w-7xl p-4 m-auto">
       <HeaderSection
@@ -54,7 +55,7 @@ export default function Next({
         <Image
           src={
             sectionData?.coverImage
-              ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.coverImage
+              ? `${process.env.NEXT_PUBLIC_API_URL}/${sectionData.coverImage
                   .replace(/\\/g, "/")
                   .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
               : "/images/droneArmy.png" // Fallback image if no cover image

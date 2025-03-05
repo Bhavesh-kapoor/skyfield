@@ -1,8 +1,21 @@
 import React from "react";
 import HeroSection from "../../components/home/HeroSection";
 import ContactUsForm from "@/components/contact/ContactUsForm";
+import { getContactUsData } from "@/utils/server";
 
-export default function page() {
+const page =async () => {
+  const { loading, careerPageData }: any = await getContactUsData();
+  if (!loading) return null;
+  const {
+    title,
+    subTitle,
+    description,
+    coverImage,
+    videoUrl,
+    slug,
+    link,
+    contents,
+  } = careerPageData[0];
   const data = {
     title: "Our Applications",
     description:
@@ -13,14 +26,16 @@ export default function page() {
   return (
     <div>
       <HeroSection
-        title={data?.title}
-        description={data?.description}
-        link={data?.link}
-        video={data?.video}
+        title={title || data?.title}
+        description={description || data?.description}
+        link={link || "/contact-us"}
+        video={videoUrl}
       />
       <div className="bg-gray-50">
         <ContactUsForm />
       </div>
     </div>
   );
-}
+};
+
+export default page;

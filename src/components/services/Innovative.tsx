@@ -37,7 +37,7 @@ const Innovative = ({
       {/* Image Section */}
       <div className="w-full lg:w-1/3 ">
         <Image
-          src={sectionData?.coverImage || "/images/innovative.png"}
+          src={`${process.env.NEXT_PUBLIC_API_URL}/${sectionData?.coverImage}` || "/images/innovative.png"}
           alt={sectionData?.title || "Indoor Drone"}
           width={500}
           height={500}

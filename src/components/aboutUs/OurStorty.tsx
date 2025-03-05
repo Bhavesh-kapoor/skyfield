@@ -28,7 +28,7 @@ const OurStory = ({
           <Image
             src={
               sectionData?.coverImage
-                ? `${process.env.NEXT_PUBLIC_API_URL}${sectionData.coverImage
+                ? `${process.env.NEXT_PUBLIC_API_URL}/${sectionData.coverImage
                     .replace(/\\/g, "/")
                     .replace(/^\/+/, "")}` // Handle backslashes and forward slashes
                 : "/images/droneArmy.png" // Fallback image if no cover image

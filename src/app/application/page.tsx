@@ -9,6 +9,7 @@ import { section } from "framer-motion/client";
 
 const page = async () => {
   const { loading, applicationPageData }: any = await getApplicationData();
+  if (!loading) return null;
   const {
     title,
     subTitle,
@@ -19,7 +20,6 @@ const page = async () => {
     link,
     contents,
   } = applicationPageData[0];
-  if (!loading) return null;
   const data = {
     title: "Our Applications",
     description:
